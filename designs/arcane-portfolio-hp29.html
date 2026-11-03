@@ -1,0 +1,227 @@
+<div id="arcane-portfolio-hp29">
+  <style>
+    #arcane-portfolio-hp29 {
+      --ink: #090b12;
+      --midnight: #101522;
+      --wine: #471b2a;
+      --gold: #d8b56a;
+      --pale-gold: #f4dfac;
+      --parchment: #f1e6ce;
+      --muted: #a7a396;
+      color-scheme: dark;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      color: var(--parchment);
+      background:
+        radial-gradient(circle at 82% 9%, rgba(216,181,106,.12), transparent 25%),
+        radial-gradient(circle at 8% 44%, rgba(92,33,56,.28), transparent 28%),
+        linear-gradient(145deg, #090b12 0%, #101522 52%, #090b12 100%);
+      font-family: Georgia, 'Times New Roman', serif;
+      isolation: isolate;
+    }
+    #arcane-portfolio-hp29 * { box-sizing: border-box; }
+    #arcane-portfolio-hp29 button, #arcane-portfolio-hp29 a { -webkit-tap-highlight-color: transparent; }
+    #arcane-portfolio-hp29 button { font: inherit; }
+    #arcane-portfolio-hp29 .arc-stars {
+      position: absolute; inset: 0; z-index: -1; opacity: .6; pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(244,223,172,.85) 0 1px, transparent 1.4px),
+        radial-gradient(circle, rgba(244,223,172,.55) 0 1px, transparent 1.4px);
+      background-size: 137px 149px, 211px 197px;
+      background-position: 17px 31px, 83px 67px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+    }
+    #arcane-portfolio-hp29 .arc-shell { max-width: 1240px; margin: 0 auto; padding: 0 42px; }
+    #arcane-portfolio-hp29 .arc-nav {
+      min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      border-bottom: 1px solid rgba(216,181,106,.22);
+    }
+    #arcane-portfolio-hp29 .arc-brand { display: flex; align-items: center; gap: 12px; color: var(--pale-gold); }
+    #arcane-portfolio-hp29 .arc-sigil {
+      width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--gold);
+      transform: rotate(45deg); font-size: 18px;
+    }
+    #arcane-portfolio-hp29 .arc-sigil span { transform: rotate(-45deg); }
+    #arcane-portfolio-hp29 .arc-brand-copy { line-height: 1.05; letter-spacing: .08em; font-size: 14px; }
+    #arcane-portfolio-hp29 .arc-brand-copy small { display: block; margin-top: 6px; color: var(--muted); font: 10px Arial, sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+    #arcane-portfolio-hp29 .arc-links { display: flex; gap: 30px; align-items: center; }
+    #arcane-portfolio-hp29 .arc-links a { color: #c7c0b0; text-decoration: none; font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .18em; }
+    #arcane-portfolio-hp29 .arc-links a:hover { color: var(--pale-gold); }
+    #arcane-portfolio-hp29 .arc-availability { display: flex; gap: 8px; align-items: center; color: var(--gold); font: 10px Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    #arcane-portfolio-hp29 .arc-availability:before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #9fb995; box-shadow: 0 0 12px #9fb995; }
+    #arcane-portfolio-hp29 .arc-hero { display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; padding: 76px 0 68px; }
+    #arcane-portfolio-hp29 .arc-kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; color: var(--gold); font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .28em; }
+    #arcane-portfolio-hp29 .arc-kicker:before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+    #arcane-portfolio-hp29 h1 { margin: 0; max-width: 680px; font-size: clamp(50px, 6.1vw, 88px); font-weight: 400; line-height: .94; letter-spacing: -.045em; }
+    #arcane-portfolio-hp29 h1 em { display: block; color: var(--gold); font-weight: 400; }
+    #arcane-portfolio-hp29 .arc-intro { max-width: 530px; margin: 26px 0 32px; color: #b9b6ad; font: 15px/1.8 Arial, sans-serif; }
+    #arcane-portfolio-hp29 .arc-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    #arcane-portfolio-hp29 .arc-btn {
+      min-height: 48px; padding: 0 22px; border: 1px solid var(--gold); cursor: pointer;
+      color: var(--ink); background: var(--gold); font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .16em;
+      transition: transform .25s ease, background .25s ease, color .25s ease;
+    }
+    #arcane-portfolio-hp29 .arc-btn:hover { transform: translateY(-2px); background: var(--pale-gold); }
+    #arcane-portfolio-hp29 .arc-btn.arc-ghost { color: var(--pale-gold); background: transparent; border-color: rgba(216,181,106,.45); }
+    #arcane-portfolio-hp29 .arc-btn.arc-ghost:hover { background: rgba(216,181,106,.08); }
+    #arcane-portfolio-hp29 .arc-visual { position: relative; min-height: 460px; display: grid; place-items: center; }
+    #arcane-portfolio-hp29 .arc-halo { position: absolute; width: 380px; height: 380px; border: 1px solid rgba(216,181,106,.16); border-radius: 50%; }
+    #arcane-portfolio-hp29 .arc-halo:before, #arcane-portfolio-hp29 .arc-halo:after { content: '✦'; position: absolute; color: var(--gold); font-size: 18px; }
+    #arcane-portfolio-hp29 .arc-halo:before { top: 32px; left: 34px; }
+    #arcane-portfolio-hp29 .arc-halo:after { right: 21px; bottom: 55px; }
+    #arcane-portfolio-hp29 .arc-window {
+      position: relative; width: min(310px, 82%); height: 410px; overflow: hidden;
+      border: 1px solid rgba(216,181,106,.65); border-radius: 160px 160px 8px 8px;
+      background:
+        radial-gradient(circle at 65% 25%, rgba(244,223,172,.24), transparent 14%),
+        linear-gradient(180deg, #1c2940 0%, #15192a 52%, #351a29 100%);
+      box-shadow: 0 0 0 9px rgba(216,181,106,.035), 0 28px 70px rgba(0,0,0,.48), inset 0 0 55px rgba(0,0,0,.3);
+    }
+    #arcane-portfolio-hp29 .arc-window:before, #arcane-portfolio-hp29 .arc-window:after { content: ''; position: absolute; background: rgba(216,181,106,.35); z-index: 2; }
+    #arcane-portfolio-hp29 .arc-window:before { left: 50%; top: 0; bottom: 0; width: 1px; }
+    #arcane-portfolio-hp29 .arc-window:after { left: 0; right: 0; top: 49%; height: 1px; }
+    #arcane-portfolio-hp29 .arc-moon { position: absolute; top: 66px; right: 58px; width: 58px; height: 58px; border-radius: 50%; background: var(--pale-gold); box-shadow: 0 0 40px rgba(244,223,172,.42); }
+    #arcane-portfolio-hp29 .arc-castle { position: absolute; bottom: -2px; left: 0; width: 100%; height: 57%; color: #090b12; }
+    #arcane-portfolio-hp29 .arc-owl { position: absolute; left: 44px; top: 130px; width: 72px; color: var(--pale-gold); animation: arc-float 4s ease-in-out infinite; }
+    #arcane-portfolio-hp29 .arc-candle { position: absolute; width: 8px; height: 48px; border-radius: 3px; background: #d9c9a4; box-shadow: 0 8px 18px rgba(0,0,0,.4); animation: arc-float 4s ease-in-out infinite; }
+    #arcane-portfolio-hp29 .arc-candle:before { content: ''; position: absolute; width: 12px; height: 20px; left: -2px; top: -21px; border-radius: 70% 30% 65% 35%; background: #ffd78a; box-shadow: 0 0 18px #e7a74b; transform: rotate(8deg); }
+    #arcane-portfolio-hp29 .arc-candle.one { left: 4%; top: 23%; }
+    #arcane-portfolio-hp29 .arc-candle.two { right: 1%; top: 48%; animation-delay: -1.7s; height: 36px; }
+    #arcane-portfolio-hp29 .arc-candle.three { left: 10%; bottom: 9%; animation-delay: -2.5s; height: 29px; }
+    #arcane-portfolio-hp29 .arc-seal { position: absolute; right: 3%; bottom: 3%; width: 82px; height: 82px; display: grid; place-items: center; border-radius: 50%; color: var(--pale-gold); background: #6c2637; border: 4px double #a55360; box-shadow: 0 10px 30px rgba(0,0,0,.4); transform: rotate(-12deg); font-size: 30px; }
+    #arcane-portfolio-hp29 .arc-proof { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid rgba(216,181,106,.2); border-bottom: 1px solid rgba(216,181,106,.2); }
+    #arcane-portfolio-hp29 .arc-proof > div { padding: 23px 0; text-align: center; }
+    #arcane-portfolio-hp29 .arc-proof > div + div { border-left: 1px solid rgba(216,181,106,.2); }
+    #arcane-portfolio-hp29 .arc-proof strong { display: block; color: var(--pale-gold); font-size: 25px; font-weight: 400; }
+    #arcane-portfolio-hp29 .arc-proof span { display: block; margin-top: 7px; color: var(--muted); font: 10px Arial, sans-serif; text-transform: uppercase; letter-spacing: .17em; }
+    #arcane-portfolio-hp29 .arc-work { padding: 76px 0; }
+    #arcane-portfolio-hp29 .arc-section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+    #arcane-portfolio-hp29 .arc-section-head h2 { margin: 0; font-size: clamp(34px,4vw,52px); font-weight: 400; letter-spacing: -.025em; }
+    #arcane-portfolio-hp29 .arc-section-head p { margin: 8px 0 0; color: var(--muted); font: 13px Arial, sans-serif; }
+    #arcane-portfolio-hp29 .arc-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    #arcane-portfolio-hp29 .arc-filter { min-height: 36px; padding: 0 14px; border: 1px solid rgba(216,181,106,.25); color: #bbb3a2; background: transparent; cursor: pointer; font: 10px Arial, sans-serif; text-transform: uppercase; letter-spacing: .12em; }
+    #arcane-portfolio-hp29 .arc-filter[aria-pressed="true"] { color: var(--ink); background: var(--gold); border-color: var(--gold); }
+    #arcane-portfolio-hp29 .arc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    #arcane-portfolio-hp29 .arc-project { min-width: 0; transition: opacity .25s ease, transform .25s ease; }
+    #arcane-portfolio-hp29 .arc-project[hidden] { display: none; }
+    #arcane-portfolio-hp29 .arc-project-art { position: relative; height: 255px; overflow: hidden; border: 1px solid rgba(216,181,106,.23); transition: transform .35s ease, border-color .35s ease; }
+    #arcane-portfolio-hp29 .arc-project:hover .arc-project-art { transform: translateY(-6px); border-color: var(--gold); }
+    #arcane-portfolio-hp29 .arc-art-one { display: grid; place-items: center; background: radial-gradient(circle, #4c2538, #18121c 70%); }
+    #arcane-portfolio-hp29 .arc-art-one .arc-bottle { width: 74px; height: 128px; border: 2px solid var(--gold); border-radius: 10px 10px 32px 32px; position: relative; box-shadow: inset 0 -45px 0 rgba(216,181,106,.12), 0 0 45px rgba(216,181,106,.1); }
+    #arcane-portfolio-hp29 .arc-art-one .arc-bottle:before { content: ''; position: absolute; width: 32px; height: 39px; left: 19px; top: -37px; border: 2px solid var(--gold); border-bottom: 0; }
+    #arcane-portfolio-hp29 .arc-art-one .arc-bottle:after { content: '✦'; position: absolute; inset: 39px 0 auto; text-align: center; color: var(--gold); font-size: 32px; }
+    #arcane-portfolio-hp29 .arc-art-two { background: linear-gradient(160deg,#182a33,#0c111a); }
+    #arcane-portfolio-hp29 .arc-art-two:before { content: ''; position: absolute; width: 170px; height: 170px; border: 1px solid #89aeb3; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%,-50%); box-shadow: 0 0 0 22px rgba(137,174,179,.06), 0 0 0 48px rgba(137,174,179,.04); }
+    #arcane-portfolio-hp29 .arc-art-two:after { content: '☾'; position: absolute; inset: 0; display: grid; place-items: center; color: #bfd4d2; font-size: 98px; }
+    #arcane-portfolio-hp29 .arc-art-three { display: grid; place-items: center; background: #d8c9a9; }
+    #arcane-portfolio-hp29 .arc-art-three:before { content: 'A'; width: 136px; height: 174px; display: grid; place-items: center; border: 1px solid #4b3230; color: #4b3230; font-size: 106px; line-height: 1; box-shadow: 10px 10px 0 rgba(75,50,48,.13); }
+    #arcane-portfolio-hp29 .arc-project-meta { display: flex; justify-content: space-between; gap: 14px; padding-top: 17px; }
+    #arcane-portfolio-hp29 .arc-project h3 { margin: 0; color: var(--pale-gold); font-size: 22px; font-weight: 400; }
+    #arcane-portfolio-hp29 .arc-project p { margin: 6px 0 0; color: var(--muted); font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .12em; }
+    #arcane-portfolio-hp29 .arc-project-num { color: var(--gold); font: 11px Arial, sans-serif; }
+    #arcane-portfolio-hp29 .arc-contact { margin: 0 0 42px; padding: 42px; display: flex; align-items: center; justify-content: space-between; gap: 30px; border: 1px solid rgba(216,181,106,.35); background: linear-gradient(105deg, rgba(71,27,42,.5), rgba(16,21,34,.7)); }
+    #arcane-portfolio-hp29 .arc-contact h2 { margin: 0 0 9px; font-size: clamp(28px,3.5vw,44px); font-weight: 400; }
+    #arcane-portfolio-hp29 .arc-contact p { margin: 0; color: #b9b6ad; font: 13px/1.6 Arial, sans-serif; }
+    #arcane-portfolio-hp29 .arc-footer { padding: 0 0 28px; display: flex; justify-content: space-between; gap: 20px; color: #77776f; font: 10px Arial, sans-serif; text-transform: uppercase; letter-spacing: .14em; }
+    #arcane-portfolio-hp29 .arc-toast { min-height: 20px; margin-top: 14px; color: var(--gold); font: 12px Arial, sans-serif; }
+    @keyframes arc-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-11px) rotate(2deg); } }
+    @media (max-width: 800px) {
+      #arcane-portfolio-hp29 .arc-shell { padding: 0 24px; }
+      #arcane-portfolio-hp29 .arc-links { display: none; }
+      #arcane-portfolio-hp29 .arc-hero { grid-template-columns: 1fr; gap: 34px; padding: 52px 0; }
+      #arcane-portfolio-hp29 .arc-visual { min-height: 420px; }
+      #arcane-portfolio-hp29 .arc-grid { grid-template-columns: 1fr; }
+      #arcane-portfolio-hp29 .arc-project-art { height: 230px; }
+      #arcane-portfolio-hp29 .arc-section-head, #arcane-portfolio-hp29 .arc-contact { align-items: flex-start; flex-direction: column; }
+      #arcane-portfolio-hp29 .arc-contact { padding: 28px; }
+    }
+    @media (max-width: 460px) {
+      #arcane-portfolio-hp29 .arc-shell { padding: 0 18px; }
+      #arcane-portfolio-hp29 .arc-availability { display: none; }
+      #arcane-portfolio-hp29 h1 { font-size: 48px; }
+      #arcane-portfolio-hp29 .arc-proof span { letter-spacing: .08em; font-size: 9px; }
+      #arcane-portfolio-hp29 .arc-proof strong { font-size: 21px; }
+      #arcane-portfolio-hp29 .arc-footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #arcane-portfolio-hp29 *, #arcane-portfolio-hp29 *:before, #arcane-portfolio-hp29 *:after { animation: none !important; transition: none !important; }
+    }
+  </style>
+  <div class="arc-stars"></div>
+  <div class="arc-shell">
+    <nav class="arc-nav" aria-label="Portfolio navigation">
+      <div class="arc-brand"><div class="arc-sigil"><span>✦</span></div><div class="arc-brand-copy">ALEXANDRA ROWE<small>Digital Enchanter</small></div></div>
+      <div class="arc-links"><a href="#arc-work-hp29">Selected work</a><a href="#arc-about-hp29">The craft</a><a href="#arc-contact-hp29">Contact</a></div>
+      <div class="arc-availability">Accepting commissions</div>
+    </nav>
+    <main>
+      <section class="arc-hero">
+        <div>
+          <p class="arc-kicker">Designer of digital enchantments</p>
+          <h1>Websites with a little <em>magic.</em></h1>
+          <p class="arc-intro">I blend story, strategy, and spellbinding design to turn ambitious ideas into digital experiences people remember.</p>
+          <div class="arc-actions">
+            <button class="arc-btn" data-scroll="arc-work-hp29">Explore the grimoire <span aria-hidden="true">↗</span></button>
+            <button class="arc-btn arc-ghost" id="arc-magic-hp29">Cast a little magic ✦</button>
+          </div>
+          <div class="arc-toast" id="arc-toast-hp29" aria-live="polite"></div>
+        </div>
+        <div class="arc-visual" aria-label="An enchanted arched window overlooking a moonlit castle">
+          <div class="arc-halo"></div>
+          <div class="arc-candle one"></div><div class="arc-candle two"></div><div class="arc-candle three"></div>
+          <div class="arc-window">
+            <div class="arc-moon"></div>
+            <svg class="arc-owl" viewBox="0 0 90 50" fill="none" aria-hidden="true"><path d="M44 28C30 5 13 4 3 8c10 4 13 14 18 21 7 10 18 8 25 3m1-4C60 5 77 4 87 8c-10 4-13 14-18 21-7 10-18 8-25 3" stroke="currentColor" stroke-width="2"/><path d="M40 27c1-8 9-8 10 0l-2 12h-6l-2-12Z" fill="currentColor"/><circle cx="43" cy="25" r="1" fill="#101522"/><circle cx="47" cy="25" r="1" fill="#101522"/></svg>
+            <svg class="arc-castle" viewBox="0 0 320 240" fill="currentColor" aria-hidden="true"><path d="M0 240v-63l26-15V96h12V61h10v35h13v52h18v-81h12V30h10v37h14v52h16v-29h12V55h9v35h12v88h20V85h12V44h10v41h13v67h18v-35h12v-24h9v24h12v49l31 18v56H0Z"/><path d="m88 31 8-20 8 20H88Zm91 14 7-19 8 19h-15ZM25 62l8-20 8 20H25Z"/></svg>
+          </div>
+          <div class="arc-seal" aria-hidden="true">A</div>
+        </div>
+      </section>
+      <section class="arc-proof" id="arc-about-hp29" aria-label="Experience highlights">
+        <div><strong>08</strong><span>Years of craft</span></div><div><strong>42</strong><span>Brands transformed</span></div><div><strong>11</strong><span>Design awards</span></div>
+      </section>
+      <section class="arc-work" id="arc-work-hp29">
+        <div class="arc-section-head">
+          <div><h2>Selected enchantments</h2><p>A few favourites from the grimoire.</p></div>
+          <div class="arc-filters" aria-label="Filter projects">
+            <button class="arc-filter" data-filter="all" aria-pressed="true">All</button><button class="arc-filter" data-filter="brand" aria-pressed="false">Brand</button><button class="arc-filter" data-filter="digital" aria-pressed="false">Digital</button>
+          </div>
+        </div>
+        <div class="arc-grid">
+          <article class="arc-project" data-category="brand"><div class="arc-project-art arc-art-one"><div class="arc-bottle"></div></div><div class="arc-project-meta"><div><h3>The Alchemist</h3><p>Identity · Packaging</p></div><span class="arc-project-num">I</span></div></article>
+          <article class="arc-project" data-category="digital"><div class="arc-project-art arc-art-two"></div><div class="arc-project-meta"><div><h3>Nocturne</h3><p>Immersive commerce</p></div><span class="arc-project-num">II</span></div></article>
+          <article class="arc-project" data-category="brand digital"><div class="arc-project-art arc-art-three"></div><div class="arc-project-meta"><div><h3>Astronomy Review</h3><p>Editorial · Digital</p></div><span class="arc-project-num">III</span></div></article>
+        </div>
+      </section>
+      <section class="arc-contact" id="arc-contact-hp29">
+        <div><h2>Have an extraordinary idea?</h2><p>Let’s give it the story, identity, and digital home it deserves.<br>Now booking select projects for winter 2026.</p></div>
+        <button class="arc-btn" id="arc-contact-btn-hp29">Begin your story ↗</button>
+      </section>
+      <div class="arc-toast" id="arc-contact-note-hp29" aria-live="polite"></div>
+    </main>
+    <footer class="arc-footer"><span>© 2026 Alexandra Rowe</span><span>Made with intention & a touch of mischief</span></footer>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('arcane-portfolio-hp29');
+      const toast = root.querySelector('#arc-toast-hp29');
+      root.querySelectorAll('[data-scroll]').forEach(button => button.addEventListener('click', () => {
+        root.querySelector('#' + button.dataset.scroll).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }));
+      root.querySelectorAll('.arc-filter').forEach(button => button.addEventListener('click', () => {
+        root.querySelectorAll('.arc-filter').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        root.querySelectorAll('.arc-project').forEach(project => {
+          project.hidden = button.dataset.filter !== 'all' && !project.dataset.category.split(' ').includes(button.dataset.filter);
+        });
+      }));
+      root.querySelector('#arc-magic-hp29').addEventListener('click', () => {
+        const spells = ['✦ Lumos! Your next big idea is glowing already.', '✦ Expecto creativity! Consider the inspiration summoned.', '✦ Mischief managed. Now let’s make something magical.'];
+        toast.textContent = spells[Math.floor(Math.random() * spells.length)];
+      });
+      root.querySelector('#arc-contact-btn-hp29').addEventListener('click', () => {
+        root.querySelector('#arc-contact-note-hp29').textContent = 'Your owl is ready — write to hello@alexandrarowe.design to begin.';
+      });
+    })();
+  </script>
+</div>

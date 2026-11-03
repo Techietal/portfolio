@@ -1,0 +1,115 @@
+---
+/**
+ * About + stats (PLAN.md §5.3 row 4): H2 = about.heading, paragraphs on the
+ * left, five bordered stat cards on the right (alternating palette
+ * backgrounds, always with ink text).
+ */
+import { getProfile } from '../lib/site';
+
+const profile = await getProfile();
+---
+
+<section class="section about-section" id="about">
+  <div class="shell">
+    <div class="section-head">
+      <h2>{profile.about.heading}</h2>
+    </div>
+
+    <div class="about">
+      <div class="about__text">
+        {profile.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <ul class="stats">
+        {
+          profile.stats.map((stat) => (
+            <li class="stat bouncy">
+              <span class="stat__value">{stat.value}</span>
+              <span class="stat__label">{stat.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about__text p {
+    max-width: 580px;
+  }
+
+  .about__text p + p {
+    margin-top: 14px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    list-style: none;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Alternate card backgrounds: acid / mint / blue / hot / white */
+  .stat:nth-child(1) {
+    background: var(--acid);
+  }
+
+  .stat:nth-child(2) {
+    background: var(--mint);
+  }
+
+  .stat:nth-child(3) {
+    background: var(--blue);
+  }
+
+  .stat:nth-child(4) {
+    background: var(--hot);
+  }
+
+  .stat:nth-child(5) {
+    background: var(--white);
+  }
+
+  .stat:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .stat__value {
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+
+  .stat__label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

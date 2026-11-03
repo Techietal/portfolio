@@ -1,0 +1,624 @@
+---
+/**
+ * Project page /projects/[slug] (PLAN.md §5.4; worker task W4).
+ *
+ * Every string on the page comes from the projects collection, the profile, or
+ * the fixed UI labels defined by the plan (breadcrumb names "Home"/"Work",
+ * the "More work" strip, the "Contact" nav label, decorative ↗/✹ glyphs).
+ * Nothing is invented.
+ */
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  getProfile,
+  getProjects,
+  parseHighlight,
+  type Project,
+} from '../../lib/site';
+import { projectJsonLd, breadcrumbJsonLd } from '../../lib/seo';
+
+interface Props {
+  project: Project;
+}
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, tagline, tech, links, highlights, color } = project.data;
+
+const { Content } = await render(project);
+
+const profile = await getProfile();
+const otherProjects = (await getProjects()).filter((other) => other.id !== project.id);
+
+// Astro.site can be undefined in `astro check`; same fallback SEO.astro uses.
+const site = Astro.site ?? new URL('https://silaparasetti-lohith-portfolio.vercel.app');
+
+const jsonLd = [
+  projectJsonLd(project, site),
+  breadcrumbJsonLd(
+    [
+      { name: 'Home', path: '/' },
+      { name: 'Work', path: '/#work' },
+      { name: title, path: `/projects/${project.id}` },
+    ],
+    site,
+  ),
+];
+
+/* "{tagline} Built with {first 3 tech}." — the plan's project meta description. */
+const techSummary = tech.slice(0, 3).join(', ');
+const description = techSummary.length > 0 ? `${tagline} Built with ${techSummary}.` : tagline;
+
+/** Host name of an absolute URL — used only for an sr-only external-link hint. */
+function linkHost(url: string): string {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return '';
+  }
+}
+
+interface HeadLink {
+  label: string;
+  url: string;
+  host: string;
+}
+
+const headLinks: HeadLink[] = links.map((link) => ({
+  label: link.label,
+  url: link.url,
+  host: linkHost(link.url),
+}));
+
+const contactHeadingParts = parseHighlight(profile.contact.heading);
+---
+
+<BaseLayout
+  title={`${title} — Silaparasetti Lohith`}
+  description={description}
+  path={`/projects/${project.id}`}
+  type="article"
+  jsonLd={jsonLd}
+>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <div class="shell">
+      <ol class="crumbs-list" role="list">
+        <li class="crumbs-item"><a class="crumbs-link" href="/">Home</a></li>
+        <li class="crumbs-item"><a class="crumbs-link" href="/#work">Work</a></li>
+        <li class="crumbs-item"><span class="crumbs-current" aria-current="page">{title}</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <header class="head" style={`--tone: var(--${color});`}>
+    <div class="shell">
+      <h1 class="head-title">{title}</h1>
+      <p class="head-tagline">{tagline}</p>
+      {tech.length > 0 && (
+        <ul class="head-tech" role="list">
+          {tech.map((item) => (
+            <li class="chip">{item}</li>
+          ))}
+        </ul>
+      )}
+      {headLinks.length > 0 && (
+        <div class="head-actions">
+          {headLinks.map((link) => (
+            <a class="btn" href={link.url} rel="noopener">
+              {link.label}
+              {link.host ? <span class="sr-only"> (external link to {link.host})</span> : null}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </header>
+
+  {highlights.length > 0 && (
+    <div class="picks">
+      <div class="shell">
+        <ul class="cards" role="list">
+          {highlights.map((item) => (
+            <li class="card bouncy">
+              <span class="card-mark" aria-hidden="true">✹</span>
+              <p class="card-text">{item}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )}
+
+  <div class="body">
+    <div class="shell">
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </div>
+
+  {otherProjects.length > 0 && (
+    <section class="more">
+      <div class="shell">
+        <h2 class="more-title">More work</h2>
+        <ul class="more-grid" role="list">
+          {otherProjects.map((other) => (
+            <li>
+              <a class="more-link" href={`/projects/${other.id}`}>
+                <span class="more-copy">
+                  <span class="more-name">{other.data.title}</span>
+                  <span class="more-tag">{other.data.tagline}</span>
+                </span>
+                <span class="more-arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="cta">
+    <div class="shell">
+      <h2 class="cta-heading">
+        {contactHeadingParts.map((part) =>
+          part.hl ? (
+            <span class="cta-accent">{part.text}</span>
+          ) : (
+            <span>{part.text}</span>
+          ),
+        )}
+      </h2>
+      <p class="cta-blurb">{profile.contact.blurb}</p>
+      <a class="btn cta-btn" href="/#contact">
+        Contact <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Breadcrumb ---------- */
+
+  .crumbs {
+    padding: 14px 0 12px;
+  }
+
+  .crumbs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 0;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .crumbs-item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .crumbs-item + .crumbs-item::before {
+    content: '/';
+    margin-right: 10px;
+  }
+
+  .crumbs-link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .crumbs-link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--hot);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+  }
+
+  /* ---------- Header band (project colour, ink text — §5.2 contrast rule) ---------- */
+
+  .head {
+    padding: 54px 0 58px;
+    background: var(--tone, var(--acid));
+    border-top: var(--border);
+    border-bottom: var(--border);
+  }
+
+  .head-title {
+    margin: 0;
+    max-width: 900px;
+    font-size: clamp(38px, 8.5vw, 92px);
+    font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+
+  .head-tagline {
+    margin: 18px 0 0;
+    max-width: 620px;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .head-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0 0;
+    list-style: none;
+  }
+
+  .head-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 26px 0 0;
+  }
+
+  /* ---------- Highlights (acid cards, §5.4) ---------- */
+
+  .picks {
+    padding: 40px 0 4px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin: 0;
+    list-style: none;
+  }
+
+  .card {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    border: var(--border);
+    background: var(--acid);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card:nth-child(odd) {
+    rotate: -0.6deg;
+  }
+
+  .card:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .card-mark {
+    flex: 0 0 auto;
+    font-size: 21px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .card-text {
+    min-width: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Markdown body (§5.4 prose) ---------- */
+
+  .body {
+    padding: 48px 0 60px;
+  }
+
+  .prose {
+    max-width: 70ch;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .prose :global(h2) {
+    margin: 2.2em 0 0.55em;
+    font-size: clamp(24px, 3.4vw, 32px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+  }
+
+  .prose :global(h2:first-child),
+  .prose :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  .prose :global(h3) {
+    margin: 1.7em 0 0.45em;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1.05em;
+  }
+
+  .prose :global(ul) {
+    margin: 0 0 1.15em;
+    list-style: none;
+  }
+
+  .prose :global(ol) {
+    margin: 0 0 1.15em;
+    padding-left: 28px;
+    list-style: decimal;
+  }
+
+  .prose :global(li) {
+    margin: 0 0 0.55em;
+  }
+
+  .prose :global(ul > li) {
+    position: relative;
+    padding-left: 26px;
+  }
+
+  .prose :global(ul > li)::before {
+    content: '✹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  .prose :global(strong) {
+    font-weight: 900;
+  }
+
+  .prose :global(a) {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--hot);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(blockquote) {
+    margin: 0 0 1.15em;
+    padding-left: 18px;
+    border-left: var(--border-thin);
+  }
+
+  .prose :global(code) {
+    padding: 1px 5px;
+    border: var(--border-thin);
+    background: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+
+  .prose :global(pre) {
+    margin: 0 0 1.15em;
+    padding: 16px 18px;
+    border: var(--border);
+    background: var(--paper);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .prose :global(pre code) {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: inherit;
+  }
+
+  .prose :global(hr) {
+    margin: 2em 0;
+    border: 0;
+    border-top: var(--border-thin);
+  }
+
+  .prose :global(img) {
+    border: var(--border-thin);
+  }
+
+  /* ---------- More work strip (§5.4) ---------- */
+
+  .more {
+    padding: 6px 0 64px;
+  }
+
+  .more-title {
+    margin: 0 0 18px;
+    font-size: clamp(30px, 4.4vw, 52px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 0;
+    list-style: none;
+  }
+
+  .more-link {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 15px 18px;
+    border: var(--border-thin);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .more-link:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .more-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .more-name {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .more-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .more-arrow {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: var(--border-thin);
+    border-radius: 50%;
+    background: var(--acid);
+    font-size: 17px;
+  }
+
+  /* ---------- Contact CTA (ink band, §5.3 row 10 language) ---------- */
+
+  .cta {
+    padding: 64px 0 70px;
+    border-top: var(--border);
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+  }
+
+  .cta-heading {
+    margin: 0 auto;
+    max-width: 940px;
+    font-size: clamp(40px, 7vw, 86px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+  }
+
+  .cta-accent {
+    color: var(--acid);
+  }
+
+  .cta-blurb {
+    margin: 18px auto 0;
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .btn.cta-btn {
+    margin-top: 26px;
+    background: var(--hot);
+    border-color: var(--white);
+    color: var(--ink);
+    box-shadow: var(--shadow-on-ink);
+  }
+
+  .btn.cta-btn:hover {
+    box-shadow: 2px 2px 0 var(--white);
+  }
+
+  /* ---------- Responsive (§5.2: 800px, 580px) ---------- */
+
+  @media (max-width: 800px) {
+    .head {
+      padding: 44px 0 48px;
+    }
+
+    .picks {
+      padding: 30px 0 4px;
+    }
+
+    .body {
+      padding: 40px 0 48px;
+    }
+
+    .more {
+      padding: 6px 0 52px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .crumbs {
+      padding: 12px 0 10px;
+    }
+
+    .head {
+      padding: 34px 0 40px;
+    }
+
+    .head-title {
+      font-size: clamp(34px, 11vw, 54px);
+    }
+
+    .picks {
+      padding: 24px 0 2px;
+    }
+
+    .cards {
+      gap: 14px;
+    }
+
+    .card {
+      padding: 15px 16px;
+    }
+
+    .body {
+      padding: 34px 0 40px;
+    }
+
+    .more {
+      padding: 4px 0 44px;
+    }
+
+    .more-grid {
+      gap: 14px;
+    }
+
+    .more-link {
+      padding: 13px 15px;
+    }
+
+    .cta {
+      padding: 46px 0 52px;
+    }
+  }
+</style>

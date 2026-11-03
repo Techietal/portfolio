@@ -1,0 +1,52 @@
+---
+/**
+ * Site footer (PLAN.md §5.3 row 11): full-width ink band, mono uppercase
+ * small text, with the PaletteRemix button on the right.
+ */
+import { getProfile } from '../lib/site';
+import PaletteRemix from './PaletteRemix.astro';
+
+const profile = await getProfile();
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__inner">
+      <p class="footer__item">© {year} {profile.name}</p>
+      <p class="footer__item">Built with Astro, guts &amp; grids</p>
+      <PaletteRemix />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    border-top: 1px solid var(--ink-line);
+    color: var(--muted-dim);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+  }
+
+  .footer__item {
+    margin: 0;
+  }
+
+  @media (max-width: 580px) {
+    .footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>

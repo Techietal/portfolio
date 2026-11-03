@@ -1,0 +1,178 @@
+---
+/**
+ * One project card (PLAN.md §5.3 row 5). The whole card is a single link to
+ * the project page. Coloured art block (data.color) with a rotated paper
+ * "type poster" showing the first word of the title in big 900 type.
+ */
+import type { Project } from '../lib/site';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { title, tagline, tech, color } = project.data;
+
+// One word per line (max 3), last word in pink. Font size shrinks with the
+// longest word so words never break mid-way inside the 164px-wide poster.
+const words = title.toUpperCase().split(/\s+/).slice(0, 3);
+const longest = Math.max(...words.map((word) => word.length));
+const posterSize = Math.min(64, Math.floor(164 / (longest * 0.68)));
+---
+
+<a class="pcard bouncy" data-color={color} href={`/projects/${project.id}`}>
+  <div class="pcard__art" aria-hidden="true">
+    <div class="pcard__poster" style={`--poster-size: ${posterSize}px;`}>
+      {words.map((word, index) => (
+        <span class:list={['pcard__poster-word', { 'pcard__poster-accent': index === words.length - 1 && words.length > 1 }]}>
+          {word}
+        </span>
+      ))}
+    </div>
+  </div>
+  <div class="pcard__copy">
+    <div class="pcard__text">
+      <h3 class="pcard__title">{title}</h3>
+      <p class="pcard__tagline">{tagline}</p>
+      <p class="pcard__tech">{tech.slice(0, 4).join(' · ')}</p>
+    </div>
+    <span class="pcard__arrow" aria-hidden="true">↗</span>
+  </div>
+</a>
+
+<style>
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+    text-decoration: none;
+    overflow: hidden;
+  }
+
+  .pcard__art {
+    position: relative;
+    height: 285px;
+    border-bottom: var(--border);
+  }
+
+  .pcard[data-color='mint'] .pcard__art {
+    background: var(--mint);
+  }
+
+  .pcard[data-color='hot'] .pcard__art {
+    background: var(--hot);
+  }
+
+  .pcard[data-color='blue'] .pcard__art {
+    background: var(--blue);
+  }
+
+  .pcard[data-color='acid'] .pcard__art {
+    background: var(--acid);
+  }
+
+  .pcard__poster {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 235px;
+    padding: 18px;
+    border: var(--border);
+    background: var(--paper);
+    box-shadow: 9px 9px 0 var(--ink);
+    transform: translate(-50%, -50%) rotate(-8deg);
+    font-size: var(--poster-size, 64px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+
+  .pcard__poster {
+    transition: transform 0.55s cubic-bezier(0.34, 1.8, 0.64, 1);
+  }
+
+  .pcard:hover .pcard__poster,
+  .pcard:focus-visible .pcard__poster {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1.07);
+  }
+
+  .pcard__poster-word {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .pcard__poster-accent {
+    color: var(--hot);
+  }
+
+  .pcard__copy {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .pcard__text {
+    min-width: 0;
+  }
+
+  .pcard__title {
+    margin: 0 0 7px;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .pcard:hover .pcard__title {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--hot);
+  }
+
+  .pcard__tagline {
+    margin: 0 0 12px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .pcard__tech {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .pcard__arrow {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border: var(--border-thin);
+    border-radius: 50%;
+    background: var(--acid);
+    font-size: 23px;
+  }
+
+  @media (max-width: 580px) {
+    .pcard__art {
+      height: 230px;
+    }
+
+    .pcard__poster {
+      width: 160px;
+      height: 190px;
+      font-size: calc(var(--poster-size, 64px) * 0.75);
+    }
+  }
+</style>

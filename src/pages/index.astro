@@ -1,0 +1,53 @@
+---
+/**
+ * Home page (PLAN.md §5.3 rows 2–10): composes every section in order and
+ * builds the home JSON-LD graph (§6.3) — Person, WebSite and one
+ * ScholarlyArticle per publication.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Ticker from '../components/Ticker.astro';
+import Stats from '../components/Stats.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Publications from '../components/Publications.astro';
+import Skills from '../components/Skills.astro';
+import Recognition from '../components/Recognition.astro';
+import Contact from '../components/Contact.astro';
+import { getExperience, getProfile, getPublications } from '../lib/site';
+import { articleJsonLd, personJsonLd, websiteJsonLd } from '../lib/seo';
+
+const profile = await getProfile();
+const experience = await getExperience();
+const publications = await getPublications();
+
+const site = Astro.site ?? new URL('https://silaparasetti-lohith-portfolio.vercel.app');
+const ogImage = new URL('/og-image.png', site).href;
+
+const currentJob = experience.find((job) => job.data.end === 'Present');
+const jsonLd = [
+  personJsonLd(profile, site, ogImage, {
+    currentCompany: currentJob?.data.company,
+    sameAs: publications.map((publication) => publication.data.url),
+  }),
+  websiteJsonLd(profile, site),
+  ...publications.map((publication) => articleJsonLd(publication, site)),
+];
+---
+
+<BaseLayout
+  title={profile.seo.title}
+  description={profile.seo.description}
+  path="/"
+  jsonLd={jsonLd}
+>
+  <Hero />
+  <Ticker />
+  <Stats />
+  <Projects />
+  <Experience />
+  <Publications />
+  <Skills />
+  <Recognition />
+  <Contact />
+</BaseLayout>

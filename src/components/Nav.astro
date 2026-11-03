@@ -1,0 +1,196 @@
+---
+/**
+ * Site navigation (PLAN.md §5.3 row 1).
+ * Logo → "/", five anchor links, availability pill when present.
+ * Under 580px the links collapse into a no-JS <details> menu.
+ */
+import { getProfile } from '../lib/site';
+
+const profile = await getProfile();
+
+const links = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Research', href: '/#research' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'Contact', href: '/#contact' },
+] as const;
+
+const logoText = `${profile.shortName.toUpperCase()}!`;
+const availability = (profile.availability ?? '').trim();
+---
+
+<header class="site-header">
+  <div class="shell">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__logo" href="/">
+        <span class="nav__mark" aria-hidden="true">✹</span>{logoText}
+      </a>
+
+      <ul class="nav__links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      {
+        availability && (
+          <p class="pill nav__pill">
+            <span aria-hidden="true">●</span> {availability}
+          </p>
+        )
+      }
+
+      <details class="nav__menu">
+        <summary>Menu</summary>
+        <ul class="nav__menu-list">
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--paper);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 82px;
+    border-bottom: var(--border);
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 21px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav__mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    background: var(--hot);
+    border: var(--border-thin);
+    border-radius: 50%;
+    font-size: 18px;
+    transform: rotate(-9deg);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-left: auto;
+    list-style: none;
+  }
+
+  .nav__links a {
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav__links a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--hot);
+  }
+
+  .nav__pill {
+    margin: 0;
+  }
+
+  /* No-JS mobile menu (hidden on desktop) */
+  .nav__menu {
+    display: none;
+    position: relative;
+  }
+
+  .nav__menu summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: var(--border-thin);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    list-style: none;
+  }
+
+  .nav__menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav__menu[open] summary {
+    background: var(--acid);
+  }
+
+  .nav__menu-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 30;
+    min-width: 210px;
+    padding: 8px 0;
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    list-style: none;
+  }
+
+  .nav__menu-list a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav__menu-list a:hover {
+    background: var(--acid);
+  }
+
+  @media (max-width: 580px) {
+    .nav__links,
+    .nav__pill {
+      display: none;
+    }
+
+    .nav__menu {
+      display: block;
+      margin-left: auto;
+    }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+/**
+ * Research (PLAN.md §5.3 row 7): one blue block per paper — acid badge pill,
+ * year, big uppercase title, venue · publisher in mono and a button to the
+ * paper (external, rel="noopener").
+ */
+import { getPublications } from '../lib/site';
+
+const publications = await getPublications();
+
+/** "https://www.nature.com/…" → "www.nature.com", for the sr-only hint. */
+function hostOf(url: string): string {
+  return new URL(url).host;
+}
+---
+
+<section class="section research" id="research">
+  <div class="shell">
+    <div class="section-head">
+      <h2>Published, peer-reviewed.</h2>
+    </div>
+
+    <div class="papers">
+      {
+        publications.map((publication) => (
+          <article class="paper bouncy">
+            <div class="paper__meta">
+              <span class="paper__badge">{publication.data.badge}</span>
+              <span class="paper__year">{publication.data.year}</span>
+            </div>
+            <h3 class="paper__title">{publication.data.title}</h3>
+            <p class="paper__venue">
+              {publication.data.venue} · {publication.data.publisher}
+            </p>
+            <a class="btn paper__link" href={publication.data.url} rel="noopener">
+              Read the paper <span aria-hidden="true">↗</span>
+              <span class="sr-only"> (opens {hostOf(publication.data.url)})</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .papers {
+    display: grid;
+    gap: 24px;
+  }
+
+  .paper {
+    padding: 28px;
+    border: var(--border);
+    background: var(--blue);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .paper__meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .paper__badge {
+    display: inline-block;
+    padding: 6px 11px;
+    border: var(--border-thin);
+    background: var(--acid);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+  }
+
+  .paper__year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .paper__title {
+    margin: 18px 0 10px;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .paper__venue {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .paper__link {
+    margin-top: 22px;
+  }
+
+  @media (max-width: 580px) {
+    .paper {
+      padding: 20px;
+    }
+  }
+</style>

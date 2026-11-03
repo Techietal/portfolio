@@ -1,0 +1,44 @@
+/* =============================================================
+   theme.css — design tokens ONLY (PLAN.md §5.1).
+   To re-colour the whole site, change the 6 lines at the top.
+   ============================================================= */
+
+:root {
+  /* Change these 6 lines to re-colour the whole site */
+  --paper: #f5f0e6; /* page background */
+  --ink: #111111; /* text, borders, shadows */
+  --acid: #f4ef58; /* yellow */
+  --hot: #ff71ae; /* pink */
+  --blue: #7ea7ff;
+  --mint: #77dfb1;
+
+  --white: #ffffff;
+  --muted: #c9c9c9; /* body text on ink */
+  --muted-dim: #888888; /* small footer text on ink */
+  --ink-line: #333333; /* hairline rule on ink */
+
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+
+  --border: 3px solid var(--ink);
+  --border-thin: 2px solid var(--ink);
+
+  --shadow-sm: 3px 3px 0 var(--ink);
+  --shadow: 7px 7px 0 var(--ink);
+  --shadow-lg: 13px 13px 0 var(--ink);
+
+  /* Button shadows (hard offset, no blur) */
+  --shadow-btn: 5px 5px 0 var(--hot);
+  --shadow-btn-press: 2px 2px 0 var(--hot);
+  --shadow-btn-alt: 5px 5px 0 var(--ink);
+  --shadow-btn-alt-press: 2px 2px 0 var(--ink);
+  --shadow-on-ink: 5px 5px 0 var(--white); /* buttons sitting on ink blocks */
+  --shadow-tag: 4px 4px 0 var(--ink); /* eyebrow-size offset */
+
+  --radius-pill: 999px;
+  --shell: 1280px;
+  --gutter: 34px; /* 18px under 580px */
+  --gutter-sm: 18px;
+
+  color-scheme: light;
+}

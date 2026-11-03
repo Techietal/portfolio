@@ -1,0 +1,175 @@
+<div id="botanical-portfolio-fern26">
+  <style>
+    #botanical-portfolio-fern26 {
+      --cream: #f3f0e7; --paper: #faf8f1; --forest: #203c2e; --moss: #6f8060; --sage: #c6cfb6; --clay: #c87557; --line: #d3d3c2;
+      color-scheme: light; width: 100%; overflow: hidden; background: var(--cream); color: var(--forest); font-family: Arial, Helvetica, sans-serif;
+    }
+    #botanical-portfolio-fern26 * { box-sizing: border-box; }
+    #botanical-portfolio-fern26 button { font: inherit; }
+    #botanical-portfolio-fern26 .fern-serif { font-family: Georgia, 'Times New Roman', serif; }
+    #botanical-portfolio-fern26 .fern-shell { max-width: 1220px; margin: 0 auto; padding: 0 40px; }
+    #botanical-portfolio-fern26 .fern-nav { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+    #botanical-portfolio-fern26 .fern-brand { display: flex; align-items: center; gap: 12px; font: 25px Georgia, serif; letter-spacing: -.04em; }
+    #botanical-portfolio-fern26 .fern-brand svg { width: 31px; height: 38px; color: var(--clay); }
+    #botanical-portfolio-fern26 .fern-brand sup { margin-left: 2px; font: 9px Arial, sans-serif; }
+    #botanical-portfolio-fern26 .fern-links { display: flex; align-items: center; gap: 30px; }
+    #botanical-portfolio-fern26 .fern-links a { position: relative; color: var(--forest); text-decoration: none; font-size: 12px; }
+    #botanical-portfolio-fern26 .fern-links a:after { content: ''; position: absolute; left: 0; right: 100%; bottom: -5px; height: 1px; background: var(--clay); transition: right .25s ease; }
+    #botanical-portfolio-fern26 .fern-links a:hover:after { right: 0; }
+    #botanical-portfolio-fern26 .fern-nav-cta { min-height: 40px; padding: 0 18px; border: 1px solid var(--forest); border-radius: 30px; color: var(--forest); background: transparent; cursor: pointer; font-size: 11px; }
+    #botanical-portfolio-fern26 .fern-nav-cta:hover { background: var(--forest); color: var(--paper); }
+    #botanical-portfolio-fern26 .fern-hero { display: grid; grid-template-columns: 1fr .88fr; gap: 70px; align-items: center; padding: 68px 0 60px; }
+    #botanical-portfolio-fern26 .fern-kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--clay); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; }
+    #botanical-portfolio-fern26 .fern-kicker:before { content: '✳'; font-size: 17px; }
+    #botanical-portfolio-fern26 h1 { margin: 0; max-width: 660px; font: 400 clamp(53px,6.5vw,86px)/.96 Georgia, serif; letter-spacing: -.055em; }
+    #botanical-portfolio-fern26 h1 em { color: var(--moss); font-weight: 400; }
+    #botanical-portfolio-fern26 .fern-intro { max-width: 500px; margin: 25px 0 30px; color: #5b675d; font-size: 15px; line-height: 1.75; }
+    #botanical-portfolio-fern26 .fern-actions { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+    #botanical-portfolio-fern26 .fern-btn { min-height: 50px; padding: 0 23px; border: 1px solid var(--forest); border-radius: 40px; background: var(--forest); color: var(--paper); cursor: pointer; font-size: 11px; font-weight: 700; letter-spacing: .04em; transition: transform .2s ease, background .2s ease; }
+    #botanical-portfolio-fern26 .fern-btn:hover { transform: translateY(-2px); background: #315641; }
+    #botanical-portfolio-fern26 .fern-text-btn { border: 0; border-bottom: 1px solid var(--forest); padding: 8px 0; color: var(--forest); background: transparent; cursor: pointer; font-size: 11px; font-weight: 700; }
+    #botanical-portfolio-fern26 .fern-hero-art { position: relative; min-height: 485px; }
+    #botanical-portfolio-fern26 .fern-arch { position: absolute; inset: 0 20px 0 40px; overflow: hidden; border-radius: 220px 220px 16px 16px; background: #d8ddc9; }
+    #botanical-portfolio-fern26 .fern-sun { position: absolute; width: 125px; height: 125px; top: 68px; left: 50%; transform: translateX(-50%); border-radius: 50%; background: #d7926c; }
+    #botanical-portfolio-fern26 .fern-hill { position: absolute; width: 125%; height: 52%; left: -12%; bottom: -12%; border-radius: 50% 50% 0 0; background: #7f9270; transform: rotate(-8deg); }
+    #botanical-portfolio-fern26 .fern-hill.two { left: 21%; bottom: -24%; background: #405e46; transform: rotate(17deg); }
+    #botanical-portfolio-fern26 .fern-plant { position: absolute; z-index: 2; width: 100%; height: 100%; inset: 0; color: var(--forest); }
+    #botanical-portfolio-fern26 .fern-plant .sway { transform-origin: 50% 100%; animation: fern-sway 6s ease-in-out infinite; }
+    #botanical-portfolio-fern26 .fern-vase { position: absolute; z-index: 3; left: 50%; bottom: 0; width: 116px; height: 142px; transform: translateX(-50%); border-radius: 48% 48% 26% 26% / 25% 25% 18% 18%; background: #c67b5a; box-shadow: inset -18px -10px 25px rgba(93,50,34,.12); }
+    #botanical-portfolio-fern26 .fern-vase:before { content: ''; position: absolute; width: 70px; height: 20px; left: 23px; top: -6px; border-radius: 50%; background: #9d5d44; }
+    #botanical-portfolio-fern26 .fern-vase:after { content: 'sage & soil'; position: absolute; left: 0; right: 0; top: 60px; text-align: center; color: #f4ddc9; font: 16px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-badge { position: absolute; z-index: 4; right: -4px; top: 52px; width: 104px; height: 104px; display: grid; place-items: center; padding: 17px; border-radius: 50%; background: var(--paper); box-shadow: 0 8px 30px rgba(32,60,46,.09); text-align: center; font: 10px/1.4 Arial, sans-serif; text-transform: uppercase; letter-spacing: .12em; transform: rotate(9deg); }
+    #botanical-portfolio-fern26 .fern-badge:before { content: '✳'; display: block; color: var(--clay); font-size: 24px; }
+    #botanical-portfolio-fern26 .fern-caption { position: absolute; z-index: 4; left: 3px; bottom: 28px; width: 132px; padding: 14px; background: var(--paper); box-shadow: 0 8px 30px rgba(32,60,46,.08); font: 11px/1.5 Georgia, serif; transform: rotate(-4deg); }
+    #botanical-portfolio-fern26 .fern-caption span { display: block; margin-top: 6px; color: var(--moss); font: 8px Arial, sans-serif; text-transform: uppercase; letter-spacing: .12em; }
+    #botanical-portfolio-fern26 .fern-trust { display: grid; grid-template-columns: 1.2fr repeat(4,1fr); gap: 20px; align-items: center; padding: 23px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    #botanical-portfolio-fern26 .fern-trust p { margin: 0; color: #788176; font-size: 10px; text-transform: uppercase; letter-spacing: .13em; }
+    #botanical-portfolio-fern26 .fern-trust span { text-align: center; color: #7b8376; font: 18px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-work { padding: 74px 0; }
+    #botanical-portfolio-fern26 .fern-section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+    #botanical-portfolio-fern26 .fern-section-head h2 { margin: 0; font: 400 clamp(39px,4.8vw,60px)/1 Georgia, serif; letter-spacing: -.045em; }
+    #botanical-portfolio-fern26 .fern-section-head p { max-width: 310px; margin: 0; color: #6f786f; font-size: 12px; line-height: 1.7; }
+    #botanical-portfolio-fern26 .fern-projects { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    #botanical-portfolio-fern26 .fern-project-art { position: relative; height: 305px; overflow: hidden; margin-bottom: 18px; background: var(--sage); transition: border-radius .35s ease; }
+    #botanical-portfolio-fern26 .fern-project:hover .fern-project-art { border-radius: 120px 120px 8px 8px; }
+    #botanical-portfolio-fern26 .fern-project:nth-child(2) .fern-project-art { background: #d8b29b; }
+    #botanical-portfolio-fern26 .fern-project:nth-child(3) .fern-project-art { background: #c4c7b0; }
+    #botanical-portfolio-fern26 .fern-jar { position: absolute; width: 118px; height: 148px; left: 50%; top: 50%; transform: translate(-50%,-42%); border-radius: 14px 14px 28px 28px; background: #f2e7d2; box-shadow: 16px 18px 25px rgba(51,68,48,.14); }
+    #botanical-portfolio-fern26 .fern-jar:before { content: ''; position: absolute; width: 124px; height: 28px; left: -3px; top: -22px; border-radius: 6px; background: #405642; }
+    #botanical-portfolio-fern26 .fern-jar:after { content: 'wilde\A BOTANICALS'; white-space: pre; position: absolute; left: 14px; right: 14px; top: 46px; padding: 13px 0; border-top: 1px solid #7e8d72; border-bottom: 1px solid #7e8d72; text-align: center; color: #405642; font: 17px/1.4 Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-box { position: absolute; width: 145px; height: 190px; left: 50%; top: 50%; transform: translate(-50%,-45%) rotate(-5deg); background: #f4e5d9; box-shadow: 15px 17px 25px rgba(89,54,38,.12); }
+    #botanical-portfolio-fern26 .fern-box:before { content: 'M\A'; white-space: pre; position: absolute; inset: 24px; display: grid; place-items: center; border: 1px solid #a06851; color: #a06851; font: 76px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-box:after { content: 'MARA · SKIN IN BALANCE'; position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; color: #a06851; font: 7px Arial, sans-serif; letter-spacing: .14em; }
+    #botanical-portfolio-fern26 .fern-bottle { position: absolute; width: 85px; height: 176px; left: 50%; top: 50%; transform: translate(-50%,-40%); border-radius: 8px 8px 26px 26px; background: #6f7954; box-shadow: 14px 18px 25px rgba(51,68,48,.14); }
+    #botanical-portfolio-fern26 .fern-bottle:before { content: ''; position: absolute; width: 40px; height: 44px; left: 22px; top: -39px; border-radius: 5px 5px 0 0; background: #303d2d; }
+    #botanical-portfolio-fern26 .fern-bottle:after { content: 'O\A'; white-space: pre; position: absolute; left: 10px; right: 10px; top: 41px; height: 85px; display: grid; place-items: center; background: #e9e2cd; color: #526044; text-align: center; font: 43px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-project h3 { margin: 0; font: 400 24px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-project p { margin: 7px 0 0; color: #788176; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
+    #botanical-portfolio-fern26 .fern-services { padding: 64px 0 76px; }
+    #botanical-portfolio-fern26 .fern-service-box { display: grid; grid-template-columns: .9fr 1.1fr; background: var(--forest); color: var(--paper); border-radius: 180px 0 0 0; overflow: hidden; }
+    #botanical-portfolio-fern26 .fern-service-intro { padding: 55px 46px; }
+    #botanical-portfolio-fern26 .fern-service-intro .fern-kicker { color: #d7a487; }
+    #botanical-portfolio-fern26 .fern-service-intro h2 { margin: 0 0 18px; font: 400 clamp(37px,4vw,53px)/1 Georgia, serif; letter-spacing: -.04em; }
+    #botanical-portfolio-fern26 .fern-service-intro p { color: #bac7bb; font-size: 13px; line-height: 1.7; }
+    #botanical-portfolio-fern26 .fern-service-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    #botanical-portfolio-fern26 .fern-tab { min-height: 38px; padding: 0 14px; border: 1px solid #688070; border-radius: 30px; color: #d5ded5; background: transparent; cursor: pointer; font-size: 10px; }
+    #botanical-portfolio-fern26 .fern-tab[aria-selected="true"] { background: var(--sage); border-color: var(--sage); color: var(--forest); }
+    #botanical-portfolio-fern26 .fern-package { padding: 55px 46px; background: #2b4a38; }
+    #botanical-portfolio-fern26 .fern-package-top { display: flex; justify-content: space-between; align-items: start; gap: 20px; padding-bottom: 23px; border-bottom: 1px solid #58705e; }
+    #botanical-portfolio-fern26 .fern-package h3 { margin: 0; font: 400 34px Georgia, serif; }
+    #botanical-portfolio-fern26 .fern-package-top span { color: #d7a487; font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+    #botanical-portfolio-fern26 .fern-package ul { list-style: none; padding: 0; margin: 22px 0; }
+    #botanical-portfolio-fern26 .fern-package li { padding: 9px 0; color: #d5ded5; font-size: 12px; }
+    #botanical-portfolio-fern26 .fern-package li:before { content: '✓'; margin-right: 11px; color: #d7a487; }
+    #botanical-portfolio-fern26 .fern-package-note { color: #aebcaf; font: 11px/1.6 Arial, sans-serif; }
+    #botanical-portfolio-fern26 .fern-contact { position: relative; overflow: hidden; margin-bottom: 40px; padding: 55px 30px; text-align: center; }
+    #botanical-portfolio-fern26 .fern-contact:before, #botanical-portfolio-fern26 .fern-contact:after { content: '✳'; position: absolute; color: var(--sage); font-size: 150px; opacity: .45; }
+    #botanical-portfolio-fern26 .fern-contact:before { left: -24px; top: -20px; }
+    #botanical-portfolio-fern26 .fern-contact:after { right: -20px; bottom: -40px; }
+    #botanical-portfolio-fern26 .fern-contact h2 { position: relative; margin: 0 auto 16px; max-width: 700px; font: 400 clamp(42px,5.5vw,70px)/1 Georgia, serif; letter-spacing: -.045em; }
+    #botanical-portfolio-fern26 .fern-contact h2 em { color: var(--clay); }
+    #botanical-portfolio-fern26 .fern-contact p { position: relative; margin: 0 0 25px; color: #6c786e; font-size: 13px; }
+    #botanical-portfolio-fern26 .fern-contact-note { min-height: 20px; margin-top: 16px !important; color: var(--forest) !important; }
+    #botanical-portfolio-fern26 .fern-footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 30px; border-top: 1px solid var(--line); color: #7d857b; font-size: 9px; text-transform: uppercase; letter-spacing: .12em; }
+    @keyframes fern-sway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(2deg); } }
+    @media (max-width: 820px) {
+      #botanical-portfolio-fern26 .fern-hero { grid-template-columns: 1fr; gap: 42px; }
+      #botanical-portfolio-fern26 .fern-hero-art { max-width: 480px; width: 100%; margin: 0 auto; }
+      #botanical-portfolio-fern26 .fern-trust { grid-template-columns: repeat(4,1fr); }
+      #botanical-portfolio-fern26 .fern-trust p { grid-column: 1/-1; text-align: center; }
+      #botanical-portfolio-fern26 .fern-service-box { grid-template-columns: 1fr; border-radius: 100px 0 0 0; }
+    }
+    @media (max-width: 620px) {
+      #botanical-portfolio-fern26 .fern-shell { padding: 0 20px; }
+      #botanical-portfolio-fern26 .fern-links { display: none; }
+      #botanical-portfolio-fern26 h1 { font-size: 53px; }
+      #botanical-portfolio-fern26 .fern-hero-art { min-height: 430px; }
+      #botanical-portfolio-fern26 .fern-projects { grid-template-columns: 1fr; }
+      #botanical-portfolio-fern26 .fern-project-art { height: 280px; }
+      #botanical-portfolio-fern26 .fern-section-head { flex-direction: column; align-items: flex-start; }
+      #botanical-portfolio-fern26 .fern-service-intro, #botanical-portfolio-fern26 .fern-package { padding: 38px 28px; }
+      #botanical-portfolio-fern26 .fern-trust span { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { #botanical-portfolio-fern26 *, #botanical-portfolio-fern26 *:before, #botanical-portfolio-fern26 *:after { animation: none !important; transition: none !important; } }
+  </style>
+  <div class="fern-shell">
+    <nav class="fern-nav" aria-label="Portfolio navigation">
+      <div class="fern-brand"><svg viewBox="0 0 32 42" fill="none" aria-hidden="true"><path d="M16 40V8m0 19C5 27 3 19 4 13c8 0 12 5 12 14Zm0-8c10 0 13-8 12-14-8 0-12 5-12 14Z" stroke="currentColor" stroke-width="1.5"/><path d="M16 11C12 7 13 3 16 1c3 2 4 6 0 10Z" fill="currentColor"/></svg><span>sage & soil<sup>®</sup></span></div>
+      <div class="fern-links"><a href="#fern-work-fern26">Our work</a><a href="#fern-services-fern26">Services</a><a href="#fern-about-fern26">Our philosophy</a></div>
+      <button class="fern-nav-cta" data-fern-scroll="fern-contact-fern26">Let’s grow together ↗</button>
+    </nav>
+    <main>
+      <section class="fern-hero">
+        <div>
+          <p class="fern-kicker">Branding for thoughtful businesses</p>
+          <h1>Design that helps good things <em>grow.</em></h1>
+          <p class="fern-intro">We’re an independent design studio cultivating soulful brands and digital experiences for people building a more beautiful, mindful world.</p>
+          <div class="fern-actions"><button class="fern-btn" data-fern-scroll="fern-work-fern26">Explore our garden ↗</button><button class="fern-text-btn" data-fern-scroll="fern-services-fern26">How we can help</button></div>
+        </div>
+        <div class="fern-hero-art" aria-label="A botanical still life with a terracotta vase">
+          <div class="fern-arch"><div class="fern-sun"></div><div class="fern-hill"></div><div class="fern-hill two"></div></div>
+          <svg class="fern-plant" viewBox="0 0 400 485" fill="none" aria-hidden="true"><g class="sway" stroke="currentColor" stroke-width="2"><path d="M204 392c-2-85 1-172 8-270M205 332c-43-45-56-98-64-147M207 298c44-44 61-89 72-139M202 365c-50-17-86-49-107-88"/><g fill="currentColor" stroke="none"><path d="M211 173c-26-17-24-47-10-64 23 12 30 37 10 64Z"/><path d="M204 231c-31-4-44-29-40-51 28-1 46 19 40 51Z"/><path d="M193 285c-32 3-50-20-49-43 29-7 50 12 49 43Z"/><path d="M176 250c-25-11-30-36-20-53 24 6 35 28 20 53Z"/><path d="M157 214c-25-8-34-31-26-49 24 3 38 23 26 49Z"/><path d="M221 264c29-10 38-36 29-56-27 4-42 27-29 56Z"/><path d="M249 213c27-12 34-38 23-57-26 6-38 29-23 57Z"/><path d="M162 330c-30 8-51-9-55-31 26-13 51 0 55 31Z"/><path d="M125 306c-27 1-42-18-41-38 25-6 43 10 41 38Z"/></g></g></svg>
+          <div class="fern-vase"></div><div class="fern-badge">Rooted in nature</div><div class="fern-caption">Slow design.<br>Lasting impact.<span>Our guiding principle</span></div>
+        </div>
+      </section>
+      <section class="fern-trust" id="fern-about-fern26" aria-label="Selected clients"><p>Trusted by founders at</p><span>wilde.</span><span>MARA</span><span>oko</span><span>Kindred</span></section>
+      <section class="fern-work" id="fern-work-fern26">
+        <div class="fern-section-head"><h2>Fresh from the studio</h2><p>Purposeful identities, packaging, and digital homes for brands making a positive difference.</p></div>
+        <div class="fern-projects">
+          <article class="fern-project"><div class="fern-project-art"><div class="fern-jar"></div></div><h3>Wilde Botanicals</h3><p>Strategy · Identity · Packaging</p></article>
+          <article class="fern-project"><div class="fern-project-art"><div class="fern-box"></div></div><h3>Mara Skin</h3><p>Brand world · Art direction</p></article>
+          <article class="fern-project"><div class="fern-project-art"><div class="fern-bottle"></div></div><h3>Oko Rituals</h3><p>Identity · E-commerce</p></article>
+        </div>
+      </section>
+      <section class="fern-services" id="fern-services-fern26">
+        <div class="fern-service-box">
+          <div class="fern-service-intro"><p class="fern-kicker">Ways to work together</p><h2>From tiny seed<br>to full bloom.</h2><p>Wherever your business is in its journey, there’s a thoughtful way for us to help it flourish.</p><div class="fern-service-tabs" role="tablist" aria-label="Service packages"><button class="fern-tab" role="tab" aria-selected="true" data-package="0">Seedling</button><button class="fern-tab" role="tab" aria-selected="false" data-package="1">Full bloom</button><button class="fern-tab" role="tab" aria-selected="false" data-package="2">Evergreen</button></div></div>
+          <div class="fern-package" role="tabpanel" aria-live="polite"><div class="fern-package-top"><h3 id="fern-package-title-fern26">The Seedling</h3><span id="fern-package-time-fern26">2–3 weeks</span></div><ul id="fern-package-list-fern26"><li>Brand strategy intensive</li><li>Logo & visual identity suite</li><li>Launch-ready brand guide</li></ul><p class="fern-package-note" id="fern-package-note-fern26">For new founders who need a clear, confident beginning.</p></div>
+        </div>
+      </section>
+      <section class="fern-contact" id="fern-contact-fern26"><h2>Let’s plant the first <em>seed.</em></h2><p>Tell us what you’re growing. We’ll bring the curiosity, care, and creative tools.</p><button class="fern-btn" id="fern-hello-fern26">Start a conversation ↗</button><p class="fern-contact-note" id="fern-note-fern26" aria-live="polite"></p></section>
+    </main>
+    <footer class="fern-footer"><span>© 2026 Sage & Soil Studio</span><span>Independent · Thoughtful · Planet-minded</span></footer>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('botanical-portfolio-fern26');
+      root.querySelectorAll('[data-fern-scroll]').forEach(button => button.addEventListener('click', () => root.querySelector('#' + button.dataset.fernScroll).scrollIntoView({ behavior: 'smooth' })));
+      const packages = [
+        { title: 'The Seedling', time: '2–3 weeks', items: ['Brand strategy intensive', 'Logo & visual identity suite', 'Launch-ready brand guide'], note: 'For new founders who need a clear, confident beginning.' },
+        { title: 'Full Bloom', time: '6–8 weeks', items: ['Deep brand strategy & positioning', 'Complete identity & art direction', 'Packaging or website design', 'Launch creative & ongoing support'], note: 'Our signature partnership for a complete, cohesive brand world.' },
+        { title: 'Evergreen', time: 'Monthly', items: ['Ongoing creative direction', 'Campaign & content design', 'Packaging and digital evolution', 'Priority studio access'], note: 'For growing brands that want a trusted creative partner on call.' }
+      ];
+      root.querySelectorAll('.fern-tab').forEach(tab => tab.addEventListener('click', () => {
+        const item = packages[Number(tab.dataset.package)];
+        root.querySelectorAll('.fern-tab').forEach(button => button.setAttribute('aria-selected', String(button === tab)));
+        root.querySelector('#fern-package-title-fern26').textContent = item.title;
+        root.querySelector('#fern-package-time-fern26').textContent = item.time;
+        root.querySelector('#fern-package-note-fern26').textContent = item.note;
+        const list = root.querySelector('#fern-package-list-fern26');
+        list.replaceChildren(...item.items.map(text => { const li = document.createElement('li'); li.textContent = text; return li; }));
+      }));
+      root.querySelector('#fern-hello-fern26').addEventListener('click', () => { root.querySelector('#fern-note-fern26').textContent = 'We’d love to hear your story — hello@sageandsoil.studio'; });
+    })();
+  </script>
+</div>

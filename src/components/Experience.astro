@@ -1,0 +1,166 @@
+---
+/**
+ * Experience (PLAN.md §5.3 row 6): an <ol> of ledger-style rows — mono index,
+ * company + role, mono dates on the right — with the entry's markdown body
+ * rendered below and tags as small bordered chips.
+ */
+import { render } from 'astro:content';
+import { getExperience } from '../lib/site';
+
+const entries = await getExperience();
+
+const rows = await Promise.all(
+  entries.map(async (entry) => {
+    const { Content } = await render(entry);
+    const dates = entry.data.location
+      ? `${entry.data.start} — ${entry.data.end} · ${entry.data.location}`
+      : `${entry.data.start} — ${entry.data.end}`;
+    return { entry, Content, dates };
+  }),
+);
+---
+
+<section class="section experience" id="experience">
+  <div class="shell">
+    <div class="section-head">
+      <h2>Where I've shipped.</h2>
+    </div>
+
+    <ol class="rows">
+      {
+        rows.map(({ entry, Content, dates }, index) => (
+          <li class="row">
+            <span class="row__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="row__main">
+              <div class="row__head">
+                <h3 class="row__title">
+                  <span class="row__company">{entry.data.company}</span>
+                  <span class="row__role">{entry.data.role}</span>
+                </h3>
+                <p class="row__dates">{dates}</p>
+              </div>
+              <div class="row__body">
+                <Content />
+              </div>
+              <ul class="row__tags">
+                {entry.data.tags.map((tag) => (
+                  <li class="chip">{tag}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .rows {
+    border-top: var(--border);
+    list-style: none;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: var(--border);
+  }
+
+  .row__index {
+    padding-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .row__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .row__title {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .row__company {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .row__role {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .row__dates {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .row__body :global(ul) {
+    max-width: 70ch;
+    margin-top: 12px;
+    list-style: none;
+  }
+
+  .row__body :global(li) {
+    position: relative;
+    margin-bottom: 9px;
+    padding-left: 22px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .row__body :global(li)::before {
+    content: '✹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    line-height: 2;
+  }
+
+  .row__body :global(strong) {
+    font-weight: 800;
+  }
+
+  .row__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    list-style: none;
+  }
+
+  @media (max-width: 580px) {
+    .row {
+      grid-template-columns: 34px 1fr;
+    }
+
+    .row__head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .row__dates {
+      text-align: left;
+      white-space: normal;
+    }
+  }
+</style>

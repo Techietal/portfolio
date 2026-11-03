@@ -1,0 +1,39 @@
+---
+/**
+ * 404 page (PLAN.md §5.5): big off-script heading + back home, noindex.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found — Silaparasetti Lohith" path="/404" noindex>
+  <section class="notfound">
+    <div class="shell">
+      <h1 class="notfound__title">
+        404 — this page went <span class="hl">off-script.</span>
+      </h1>
+      <a class="btn" href="/">Back home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding: 96px 0 110px;
+  }
+
+  .notfound__title {
+    max-width: 900px;
+    margin: 0 0 32px;
+    font-size: clamp(46px, 9vw, 110px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 580px) {
+    .notfound {
+      padding: 64px 0 80px;
+    }
+  }
+</style>

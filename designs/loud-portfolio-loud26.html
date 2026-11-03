@@ -1,0 +1,160 @@
+<div id="loud-portfolio-loud26">
+  <style>
+    #loud-portfolio-loud26 {
+      --paper: #f5f0e6; --ink: #111111; --acid: #f4ef58; --hot: #ff71ae; --blue: #7ea7ff; --mint: #77dfb1;
+      color-scheme: light; width: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif;
+    }
+    #loud-portfolio-loud26 * { box-sizing: border-box; }
+    #loud-portfolio-loud26 button { font: inherit; }
+    #loud-portfolio-loud26 .loud-shell { max-width: 1280px; margin: 0 auto; padding: 0 34px; }
+    #loud-portfolio-loud26 .loud-nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 82px; border-bottom: 3px solid var(--ink); }
+    #loud-portfolio-loud26 .loud-logo { display: flex; align-items: center; gap: 10px; font: 900 21px/1 Arial, sans-serif; letter-spacing: -.08em; }
+    #loud-portfolio-loud26 .loud-logo-mark { width: 34px; height: 34px; display: grid; place-items: center; background: var(--hot); border: 2px solid var(--ink); border-radius: 50%; font-size: 18px; transform: rotate(-9deg); }
+    #loud-portfolio-loud26 .loud-links { display: flex; align-items: center; gap: 24px; }
+    #loud-portfolio-loud26 .loud-links a { color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-links a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--hot); }
+    #loud-portfolio-loud26 .loud-pill { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; background: var(--acid); border: 2px solid var(--ink); border-radius: 30px; box-shadow: 3px 3px 0 var(--ink); font-size: 10px; font-weight: 900; text-transform: uppercase; transform: rotate(2deg); }
+    #loud-portfolio-loud26 .loud-hero { display: grid; grid-template-columns: 1.16fr .84fr; gap: 38px; align-items: center; padding: 58px 0 52px; }
+    #loud-portfolio-loud26 .loud-eyebrow { display: inline-block; margin: 0 0 16px; padding: 7px 11px; border: 2px solid var(--ink); background: var(--blue); box-shadow: 4px 4px 0 var(--ink); font: 800 11px 'Courier New', monospace; text-transform: uppercase; transform: rotate(-1deg); }
+    #loud-portfolio-loud26 h1 { margin: 0; max-width: 760px; font: 900 clamp(56px,7vw,100px)/.84 Arial, sans-serif; letter-spacing: -.085em; text-transform: uppercase; }
+    #loud-portfolio-loud26 h1 .loud-highlight { position: relative; display: inline-block; z-index: 0; }
+    #loud-portfolio-loud26 h1 .loud-highlight:after { content: ''; position: absolute; z-index: -1; left: -5px; right: -8px; bottom: 2px; height: 29%; background: var(--hot); transform: rotate(-1.5deg); }
+    #loud-portfolio-loud26 .loud-intro { max-width: 570px; margin: 25px 0 0; font-size: 16px; line-height: 1.55; font-weight: 600; }
+    #loud-portfolio-loud26 .loud-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    #loud-portfolio-loud26 .loud-btn { min-height: 50px; padding: 0 20px; border: 3px solid var(--ink); background: var(--ink); color: white; cursor: pointer; box-shadow: 5px 5px 0 var(--hot); font-size: 12px; font-weight: 900; text-transform: uppercase; transition: transform .15s ease, box-shadow .15s ease; }
+    #loud-portfolio-loud26 .loud-btn:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--hot); }
+    #loud-portfolio-loud26 .loud-btn.alt { background: var(--acid); color: var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+    #loud-portfolio-loud26 .loud-btn.alt:hover { box-shadow: 2px 2px 0 var(--ink); }
+    #loud-portfolio-loud26 .loud-poster-wrap { position: relative; padding: 18px 18px 18px 0; }
+    #loud-portfolio-loud26 .loud-poster { position: relative; height: 405px; overflow: hidden; border: 3px solid var(--ink); background: var(--blue); box-shadow: 13px 13px 0 var(--ink); transform: rotate(2deg); }
+    #loud-portfolio-loud26 .loud-poster-top { position: absolute; top: 16px; left: 17px; right: 17px; display: flex; justify-content: space-between; font: 900 11px 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-flower { position: absolute; width: 250px; height: 250px; left: 50%; top: 48%; transform: translate(-50%,-50%); transition: transform .4s ease; }
+    #loud-portfolio-loud26 .loud-petal { position: absolute; width: 100px; height: 100px; left: 75px; top: 10px; border: 3px solid var(--ink); border-radius: 52% 48% 50% 50%; background: var(--hot); transform-origin: 50px 115px; }
+    #loud-portfolio-loud26 .loud-petal:nth-child(2) { transform: rotate(60deg); }
+    #loud-portfolio-loud26 .loud-petal:nth-child(3) { transform: rotate(120deg); }
+    #loud-portfolio-loud26 .loud-petal:nth-child(4) { transform: rotate(180deg); }
+    #loud-portfolio-loud26 .loud-petal:nth-child(5) { transform: rotate(240deg); }
+    #loud-portfolio-loud26 .loud-petal:nth-child(6) { transform: rotate(300deg); }
+    #loud-portfolio-loud26 .loud-face { position: absolute; width: 112px; height: 112px; left: 69px; top: 69px; display: grid; place-items: center; border: 3px solid var(--ink); border-radius: 50%; background: var(--acid); font-size: 54px; font-weight: 900; letter-spacing: -.12em; }
+    #loud-portfolio-loud26 .loud-face:before { content: '••'; transform: translateY(-11px); }
+    #loud-portfolio-loud26 .loud-face:after { content: ''; position: absolute; width: 40px; height: 18px; left: 33px; bottom: 24px; border-bottom: 4px solid var(--ink); border-radius: 50%; }
+    #loud-portfolio-loud26 .loud-poster-bottom { position: absolute; bottom: 14px; left: 16px; right: 16px; padding-top: 10px; border-top: 3px solid var(--ink); font: 900 16px/1 Arial, sans-serif; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-sticker { position: absolute; right: -5px; top: -8px; z-index: 3; width: 105px; height: 105px; display: grid; place-items: center; padding: 14px; border: 3px solid var(--ink); border-radius: 50%; background: var(--acid); box-shadow: 5px 5px 0 var(--ink); text-align: center; font: 900 14px/1.05 Arial, sans-serif; text-transform: uppercase; transform: rotate(13deg); animation: loud-wiggle 4s ease-in-out infinite; }
+    #loud-portfolio-loud26 .loud-note { position: absolute; left: -21px; bottom: 3px; z-index: 3; padding: 9px 12px; border: 2px solid var(--ink); background: white; font: 800 11px 'Courier New', monospace; transform: rotate(-7deg); }
+    #loud-portfolio-loud26 .loud-ticker { padding: 12px 0; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); background: var(--hot); white-space: nowrap; overflow: hidden; font: 900 14px Arial, sans-serif; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-ticker span { display: inline-block; min-width: 100%; text-align: center; word-spacing: 12px; }
+    #loud-portfolio-loud26 .loud-work { padding: 68px 0; }
+    #loud-portfolio-loud26 .loud-section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 28px; }
+    #loud-portfolio-loud26 .loud-section-head h2 { margin: 0; font: 900 clamp(38px,5vw,64px)/.9 Arial, sans-serif; letter-spacing: -.065em; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-section-head p { max-width: 280px; margin: 0; font: 700 12px/1.5 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-projects { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+    #loud-portfolio-loud26 .loud-card { border: 3px solid var(--ink); background: white; box-shadow: 7px 7px 0 var(--ink); overflow: hidden; }
+    #loud-portfolio-loud26 .loud-card:nth-child(2) { transform: translateY(28px); }
+    #loud-portfolio-loud26 .loud-card-art { position: relative; height: 285px; overflow: hidden; border-bottom: 3px solid var(--ink); }
+    #loud-portfolio-loud26 .loud-card:first-child .loud-card-art { background: var(--mint); }
+    #loud-portfolio-loud26 .loud-card:nth-child(2) .loud-card-art { background: var(--hot); }
+    #loud-portfolio-loud26 .loud-type-poster { position: absolute; width: 200px; height: 235px; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(-8deg); padding: 18px; border: 3px solid var(--ink); background: var(--paper); box-shadow: 9px 9px 0 var(--ink); font: 900 70px/.8 Arial, sans-serif; letter-spacing: -.08em; }
+    #loud-portfolio-loud26 .loud-type-poster span { color: var(--hot); }
+    #loud-portfolio-loud26 .loud-eye { position: absolute; width: 230px; height: 120px; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(7deg); border: 3px solid var(--ink); border-radius: 100% 0 100% 0; background: var(--acid); }
+    #loud-portfolio-loud26 .loud-eye:before { content: ''; position: absolute; width: 85px; height: 85px; left: 70px; top: 15px; border: 3px solid var(--ink); border-radius: 50%; background: var(--blue); box-shadow: inset 0 0 0 25px var(--ink); }
+    #loud-portfolio-loud26 .loud-card-copy { display: flex; justify-content: space-between; gap: 16px; padding: 20px; }
+    #loud-portfolio-loud26 .loud-card h3 { margin: 0 0 7px; font: 900 23px Arial, sans-serif; letter-spacing: -.04em; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-card p { margin: 0; font: 11px 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-arrow { flex: 0 0 auto; width: 42px; height: 42px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--acid); font-size: 23px; }
+    #loud-portfolio-loud26 .loud-services { margin: 22px 0 70px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 38px; align-items: start; }
+    #loud-portfolio-loud26 .loud-services h2 { margin: 0; font: 900 clamp(38px,5vw,61px)/.9 Arial, sans-serif; letter-spacing: -.065em; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-service-list { border-top: 3px solid var(--ink); }
+    #loud-portfolio-loud26 .loud-service { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; padding: 17px 0; border-bottom: 3px solid var(--ink); }
+    #loud-portfolio-loud26 .loud-service span { font: 800 11px 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-service strong { font-size: 19px; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-service b { font-size: 24px; }
+    #loud-portfolio-loud26 .loud-quote { margin-bottom: 68px; padding: 30px; border: 3px solid var(--ink); background: var(--blue); box-shadow: 8px 8px 0 var(--ink); }
+    #loud-portfolio-loud26 .loud-quote p { margin: 0; max-width: 960px; font: 900 clamp(24px,3.6vw,44px)/1.05 Arial, sans-serif; letter-spacing: -.04em; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-quote footer { margin-top: 18px; font: 800 11px 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-contact { padding: 48px 34px; background: var(--ink); color: white; text-align: center; }
+    #loud-portfolio-loud26 .loud-contact h2 { margin: 0; font: 900 clamp(46px,7vw,92px)/.88 Arial, sans-serif; letter-spacing: -.07em; text-transform: uppercase; }
+    #loud-portfolio-loud26 .loud-contact h2 span { color: var(--acid); }
+    #loud-portfolio-loud26 .loud-contact p { margin: 20px 0; color: #c9c9c9; font-size: 14px; }
+    #loud-portfolio-loud26 .loud-contact .loud-btn { background: var(--hot); color: var(--ink); border-color: white; box-shadow: 5px 5px 0 white; }
+    #loud-portfolio-loud26 .loud-contact-note { min-height: 20px; color: var(--acid) !important; font: 800 12px 'Courier New', monospace; }
+    #loud-portfolio-loud26 .loud-footer { display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; background: var(--ink); color: #888; border-top: 1px solid #333; font: 10px 'Courier New', monospace; text-transform: uppercase; }
+    @keyframes loud-wiggle { 0%,100% { transform: rotate(13deg); } 50% { transform: rotate(5deg) scale(1.04); } }
+    @media (max-width: 800px) {
+      #loud-portfolio-loud26 .loud-hero { grid-template-columns: 1fr; }
+      #loud-portfolio-loud26 .loud-poster-wrap { max-width: 470px; width: 92%; margin: 0 auto; }
+      #loud-portfolio-loud26 .loud-projects, #loud-portfolio-loud26 .loud-services { grid-template-columns: 1fr; }
+      #loud-portfolio-loud26 .loud-card:nth-child(2) { transform: none; }
+    }
+    @media (max-width: 580px) {
+      #loud-portfolio-loud26 .loud-shell { padding: 0 18px; }
+      #loud-portfolio-loud26 .loud-links { display: none; }
+      #loud-portfolio-loud26 h1 { font-size: 54px; }
+      #loud-portfolio-loud26 .loud-poster { height: 350px; }
+      #loud-portfolio-loud26 .loud-flower { transform: translate(-50%,-50%) scale(.82); }
+      #loud-portfolio-loud26 .loud-section-head { align-items: flex-start; flex-direction: column; }
+      #loud-portfolio-loud26 .loud-contact { padding: 40px 18px; }
+      #loud-portfolio-loud26 .loud-footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { #loud-portfolio-loud26 *, #loud-portfolio-loud26 *:before, #loud-portfolio-loud26 *:after { animation: none !important; transition: none !important; } }
+  </style>
+  <div class="loud-shell">
+    <nav class="loud-nav" aria-label="Portfolio navigation">
+      <div class="loud-logo"><span class="loud-logo-mark">✹</span>RAFA!</div>
+      <div class="loud-links"><a href="#loud-work-loud26">Work</a><a href="#loud-services-loud26">Services</a><a href="#loud-contact-loud26">Say hello</a></div>
+      <div class="loud-pill">● Available for fun</div>
+    </nav>
+    <main>
+      <section class="loud-hero">
+        <div>
+          <p class="loud-eyebrow">Independent designer · Professional rule breaker</p>
+          <h1>No boring <span class="loud-highlight">brands.</span><br>No boring <span class="loud-highlight">websites.</span></h1>
+          <p class="loud-intro">I’m Rafa. I turn good businesses into gloriously bold brands with strategy, punchy design, and just the right amount of weird.</p>
+          <div class="loud-actions"><button class="loud-btn" data-loud-scroll="loud-work-loud26">See the good stuff ↗</button><button class="loud-btn alt" id="loud-remix-loud26">Make it weirder ✹</button></div>
+        </div>
+        <div class="loud-poster-wrap">
+          <div class="loud-sticker">Good design<br>sells!</div>
+          <div class="loud-poster">
+            <div class="loud-poster-top"><span>RAFA® STUDIO</span><span>EST. 2018</span></div>
+            <div class="loud-flower" id="loud-flower-loud26"><i class="loud-petal"></i><i class="loud-petal"></i><i class="loud-petal"></i><i class="loud-petal"></i><i class="loud-petal"></i><i class="loud-petal"></i><div class="loud-face"></div></div>
+            <div class="loud-poster-bottom">Serious about not being serious.</div>
+          </div>
+          <div class="loud-note">↑ Your brand could be this cool</div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="loud-ticker"><span>BRAND STRATEGY ✹ VISUAL IDENTITY ✹ WEB DESIGN ✹ PACKAGING ✹ CAMPAIGNS ✹ GOOD VIBES ONLY ✹</span></div>
+  <div class="loud-shell">
+    <main>
+      <section class="loud-work" id="loud-work-loud26">
+        <div class="loud-section-head"><h2>Work that<br>works hard.</h2><p>Pretty is nice. Pretty with a strategy, a pulse, and measurable results is nicer.</p></div>
+        <div class="loud-projects">
+          <article class="loud-card"><div class="loud-card-art"><div class="loud-type-poster">GO<br><span>OD</span><br>DAY</div></div><div class="loud-card-copy"><div><h3>Good Day Soda</h3><p>BRAND · PACKAGING · CAMPAIGN</p></div><div class="loud-arrow">↗</div></div></article>
+          <article class="loud-card"><div class="loud-card-art"><div class="loud-eye"></div></div><div class="loud-card-copy"><div><h3>See Saw Culture</h3><p>IDENTITY · DIGITAL · MOTION</p></div><div class="loud-arrow">↗</div></div></article>
+        </div>
+      </section>
+      <section class="loud-services" id="loud-services-loud26"><h2>Pick your<br>power-up.</h2><div class="loud-service-list"><div class="loud-service"><span>01</span><strong>Brand strategy</strong><b>✦</b></div><div class="loud-service"><span>02</span><strong>Visual identity</strong><b>✹</b></div><div class="loud-service"><span>03</span><strong>Web design</strong><b>↗</b></div><div class="loud-service"><span>04</span><strong>Campaigns & launch</strong><b>!</b></div></div></section>
+      <blockquote class="loud-quote"><p>“Rafa made us look like the brand we always wanted to be — then helped us grow into it.”</p><footer>— MAYA, FOUNDER OF GOOD DAY · 212% SALES LIFT</footer></blockquote>
+    </main>
+  </div>
+  <section class="loud-contact" id="loud-contact-loud26"><h2>Let’s make<br><span>some noise.</span></h2><p>Got a brave idea, a tired brand, or a big launch? I want in.</p><button class="loud-btn" id="loud-hello-loud26">Tell me everything ↗</button><p class="loud-contact-note" id="loud-note-loud26" aria-live="polite"></p></section>
+  <div class="loud-shell"><footer class="loud-footer"><span>© 2026 RAFA! STUDIO</span><span>Built with guts, grids & good music</span></footer></div>
+  <script>
+    (() => {
+      const root = document.getElementById('loud-portfolio-loud26');
+      root.querySelectorAll('[data-loud-scroll]').forEach(button => button.addEventListener('click', () => root.querySelector('#' + button.dataset.loudScroll).scrollIntoView({ behavior: 'smooth' })));
+      const palettes = [
+        { hot: '#ff71ae', acid: '#f4ef58', blue: '#7ea7ff', mint: '#77dfb1' },
+        { hot: '#ff8b4e', acid: '#b7f36b', blue: '#a78bfa', mint: '#5eead4' },
+        { hot: '#ff5d5d', acid: '#67e8f9', blue: '#fde047', mint: '#c4b5fd' }
+      ];
+      let paletteIndex = 0;
+      root.querySelector('#loud-remix-loud26').addEventListener('click', () => {
+        paletteIndex = (paletteIndex + 1) % palettes.length;
+        Object.entries(palettes[paletteIndex]).forEach(([name, value]) => root.style.setProperty('--' + name, value));
+        root.querySelector('#loud-flower-loud26').style.transform = 'translate(-50%,-50%) rotate(' + (paletteIndex * 35) + 'deg)';
+      });
+      root.querySelector('#loud-hello-loud26').addEventListener('click', () => { root.querySelector('#loud-note-loud26').textContent = 'Your move! Send the big idea to hey@rafa.studio'; });
+    })();
+  </script>
+</div>

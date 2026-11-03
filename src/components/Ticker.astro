@@ -1,0 +1,89 @@
+---
+/**
+ * Ticker (PLAN.md §5.3 row 3): pink band between 3px ink borders, a pure-CSS
+ * marquee. Each copy repeats the item list so it always fills the viewport;
+ * the track holds two identical copies and shifts by exactly one copy width
+ * for a seamless loop. The duplicated copy is aria-hidden.
+ */
+import { getProfile } from '../lib/site';
+
+const profile = await getProfile();
+const items = [...profile.ticker, ...profile.ticker];
+---
+
+<div class="ticker">
+  <div class="ticker__track">
+    <p class="ticker__copy">
+      {
+        items.map((item) => (
+          <>
+            <span class="ticker__item">{item}</span>
+            <span class="ticker__star" aria-hidden="true">✹</span>
+          </>
+        ))
+      }
+    </p>
+    <p class="ticker__copy" aria-hidden="true">
+      {
+        items.map((item) => (
+          <>
+            <span class="ticker__item">{item}</span>
+            <span class="ticker__star" aria-hidden="true">✹</span>
+          </>
+        ))
+      }
+    </p>
+  </div>
+</div>
+
+<style>
+  .ticker {
+    overflow: hidden;
+    padding: 12px 0;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background: var(--hot);
+  }
+
+  .ticker__track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
+  }
+
+  .ticker__copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin: 0;
+    padding-right: 24px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ticker__star {
+    font-size: 12px;
+  }
+
+  @keyframes ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 580px) {
+    .ticker__copy {
+      gap: 18px;
+      padding-right: 18px;
+      font-size: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,242 @@
+---
+/**
+ * Recognition (PLAN.md §5.3 row 9): achievements as a grid of small cards,
+ * certifications as ledger rows that link to the credential URL ("Verify ↗"),
+ * and education as a single card.
+ */
+import { getProfile } from '../lib/site';
+
+const profile = await getProfile();
+---
+
+<section class="section recognition" id="recognition">
+  <div class="shell">
+    <div class="section-head">
+      <h2>Recognition.</h2>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Achievements</h3>
+      <ul class="ach">
+        {
+          profile.achievements.map((achievement) => (
+            <li class="ach__card bouncy">
+              <span class="ach__star" aria-hidden="true">✹</span>
+              <h4 class="ach__title">{achievement.title}</h4>
+              <p class="ach__detail">{achievement.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="lower">
+      <div class="block">
+        <h3 class="block__title">Certifications</h3>
+        <ul class="certs">
+          {
+            profile.certifications.map((certification) => (
+              <li>
+                <a class="certs__row" href={certification.url} rel="noopener">
+                  <span class="certs__text">
+                    <span class="certs__name">{certification.name}</span>
+                    <span class="certs__issuer">{certification.issuer}</span>
+                  </span>
+                  <span class="certs__verify">
+                    Verify <span aria-hidden="true">↗</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title">Education</h3>
+        {
+          profile.education.map((school) => (
+            <article class="edu bouncy">
+              <h4 class="edu__school">{school.institution}</h4>
+              <p class="edu__degree">{school.degree}</p>
+              <p class="edu__meta">
+                {school.start} — {school.end} · {school.location}
+              </p>
+              <p class="edu__detail">{school.detail}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .block + .block,
+  .lower {
+    margin-top: 40px;
+  }
+
+  .block__title {
+    margin: 0 0 18px;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ----- Achievements ----- */
+
+  .ach {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    list-style: none;
+  }
+
+  .ach__card {
+    padding: 16px;
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ach__star {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 12px;
+    border: var(--border-thin);
+    background: var(--acid);
+    font-size: 13px;
+    transform: rotate(-8deg);
+  }
+
+  .ach__title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .ach__detail {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  /* ----- Certifications + education ----- */
+
+  .lower {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .certs {
+    border-top: var(--border);
+    list-style: none;
+  }
+
+  .certs li {
+    border-bottom: var(--border);
+  }
+
+  .certs__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 2px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .certs__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .certs__name {
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .certs__issuer {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .certs__verify {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--acid);
+  }
+
+  .certs__row:hover .certs__verify {
+    text-decoration-color: var(--hot);
+  }
+
+  .edu {
+    padding: 22px;
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .edu__school {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .edu__degree {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .edu__meta {
+    margin: 10px 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .edu__detail {
+    display: inline-block;
+    margin: 14px 0 0;
+    padding: 6px 10px;
+    border: var(--border-thin);
+    background: var(--acid);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    .lower {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

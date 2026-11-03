@@ -1,0 +1,58 @@
+---
+/**
+ * "Make it weirder ✹" (PLAN.md §5.6) — the only client JS on the site.
+ * Clicking cycles the three palettes from the mockup by setting CSS
+ * variables on document.documentElement. Not persisted, no layout change.
+ */
+---
+
+<button class="remix" type="button" data-palette-remix>
+  Make it weirder <span aria-hidden="true">✹</span>
+</button>
+
+<style>
+  /* Sits on the ink footer, so border + shadow are white (mockup contact button) */
+  .remix {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 3px solid var(--white);
+    background: var(--acid);
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-on-ink);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .remix:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--white);
+  }
+</style>
+
+<script>
+  const palettes = [
+    { hot: '#ff71ae', acid: '#f4ef58', blue: '#7ea7ff', mint: '#77dfb1' },
+    { hot: '#ff8b4e', acid: '#b7f36b', blue: '#a78bfa', mint: '#5eead4' },
+    { hot: '#ff5d5d', acid: '#67e8f9', blue: '#fde047', mint: '#c4b5fd' },
+  ] as const;
+
+  const root = document.documentElement;
+  const button = document.querySelector<HTMLButtonElement>('[data-palette-remix]');
+
+  if (button) {
+    let paletteIndex = 0;
+    button.addEventListener('click', () => {
+      paletteIndex = (paletteIndex + 1) % palettes.length;
+      for (const [name, value] of Object.entries(palettes[paletteIndex])) {
+        root.style.setProperty(`--${name}`, value);
+      }
+    });
+  }
+</script>

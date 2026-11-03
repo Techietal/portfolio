@@ -1,0 +1,25 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# environment / secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# local tooling (not part of the site)
+.claude/
+.dsh-shadow-home/
+.dsh-sessions/
+ORCHESTRATION.md
+worker.mjs
+PLAN.md
+My_pic.jpg
+SilaparasettiLohith.pdf

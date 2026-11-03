@@ -1,0 +1,84 @@
+---
+/**
+ * Skills (PLAN.md §5.3 row 8): each group is a ledger row — mono index, group
+ * name in big uppercase type, then the items as bordered chips.
+ */
+import { getProfile } from '../lib/site';
+
+const profile = await getProfile();
+---
+
+<section class="section skills" id="skills">
+  <div class="shell">
+    <div class="section-head">
+      <h2>Pick your<br />power-up.</h2>
+    </div>
+
+    <ol class="list">
+      {
+        profile.skills.map((group, index) => (
+          <li class="skill">
+            <span class="skill__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="skill__name">{group.group}</h3>
+            <ul class="skill__chips">
+              {group.items.map((item) => (
+                <li class="chip">{item}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .list {
+    border-top: var(--border);
+    list-style: none;
+  }
+
+  .skill {
+    display: grid;
+    grid-template-columns: 44px 230px 1fr;
+    gap: 14px 18px;
+    align-items: start;
+    padding: 20px 0;
+    border-bottom: var(--border);
+  }
+
+  .skill__index {
+    padding-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .skill__name {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .skill__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+  }
+
+  @media (max-width: 800px) {
+    .skill {
+      grid-template-columns: 44px 1fr;
+    }
+
+    .skill__chips {
+      grid-column: 2;
+    }
+  }
+</style>

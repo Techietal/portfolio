@@ -1,0 +1,116 @@
+# ─────────────────────────────────────────────────────────────
+# Everything about you that is NOT a job, project or paper.
+# Edit text freely; keep the indentation (2 spaces) and the dashes.
+# ─────────────────────────────────────────────────────────────
+
+name: Silaparasetti Lohith
+alternateName: Lohith Silaparasetti
+shortName: Lohith
+initials: SL
+role: AI/ML Engineer
+location: Noida, Uttar Pradesh, India
+availability: Open to opportunities        # shown in the nav pill; leave empty to hide
+
+seo:
+  title: Silaparasetti Lohith — AI/ML Engineer & Published Researcher
+  description: >-
+    Silaparasetti Lohith is an AI/ML engineer building agentic systems, RAG and MCP
+    tooling. Published in Scientific Reports (Nature Portfolio) and IEEE. ICPC Rank 73.
+  keywords: [Silaparasetti Lohith, AI engineer, agentic AI, multi-agent systems, RAG, MCP, LangGraph, cloud scheduling research]
+
+hero:
+  eyebrow: AI/ML Engineer · Published Researcher · Gold Medalist
+  # Words wrapped in [square brackets] get the pink highlighter.
+  headlineLines:
+    - Agents that [ship.]
+    - Research that [publishes.]
+  intro: >-
+    I'm Lohith — I build AI engineering platforms, multi-agent pipelines and the
+    backend systems behind them, with published research on scheduling in
+    heterogeneous cloud systems.
+  primaryCta: { label: See the work ↗, href: "#work" }
+  secondaryCta: { label: Download resume ↓, href: /silaparasetti-lohith-resume.pdf }
+  sticker: ICPC Rank 73!
+  posterTopLeft: SL® · NOIDA, IN
+  posterTopRight: EST. 2022
+  posterBottom: Gold medalist. Published researcher.
+  note: ↑ Usually building agents
+
+ticker: [AI Agents, RAG & MCP, LangGraph, FastAPI, AWS, Cloud Scheduling Research, Competitive Programming]
+
+about:
+  heading: Engineer by trade. Researcher by habit.
+  paragraphs:
+    - >-
+      I'm an Associate Software Engineer at Biz2X, where I build an internal AI
+      Engineering Platform that indexes 400+ company repositories alongside Jira,
+      turns tickets into Cursor-ready implementation prompts, and reviews merge
+      requests automatically.
+    - >-
+      Before that I built 10 AI agents at MAQ Software with AutoGen, Semantic Kernel
+      and ChromaDB. My research, published in Scientific Reports (Nature Portfolio)
+      and IEEE, focuses on task scheduling and resource optimisation in heterogeneous
+      cloud environments.
+    - >-
+      A competitive-programming background (ICPC Rank 73, 500+ problems) keeps me
+      honest about algorithms and efficiency.
+
+stats:
+  - { value: "2", label: Publications }
+  - { value: "73", label: ICPC Rank }
+  - { value: "500+", label: Problems solved }
+  - { value: "10+", label: AI agents built }
+  - { value: "9.62", label: CGPA }
+
+contact:
+  heading: Let's build something [loud.]
+  blurb: Open to new opportunities and collaborations in AI/ML. The inbox is always open.
+  email: lohith.its@gmail.com
+  phone: "+91 73863 44894"
+  phoneHref: "+917386344894"
+  links:
+    - { label: LinkedIn, url: "https://www.linkedin.com/in/lohith-silaparasetti-232166260/" }
+    - { label: GitHub,   url: "https://github.com/Techietal" }
+
+education:
+  - institution: Indian Institute of Information Technology, Sonepat
+    degree: B.Tech in Information Technology
+    start: Nov 2022
+    end: May 2026
+    location: Sonepat, Haryana
+    detail: "CGPA 9.62 · Gold Medalist, Batch 2022–2026"
+
+skills:
+  - group: Programming & CS
+    items: [Python, C++, Java, JavaScript, SQL, Data Structures, Algorithms, OOP, DBMS]
+  - group: Generative AI & ML
+    items: [LLMs, Prompt Engineering, Structured Outputs, Embeddings, PyTorch, Scikit-Learn, XGBoost]
+  - group: Agents, RAG & MCP
+    items: [LangGraph, LangChain, AutoGen, Semantic Kernel, CrewAI, LlamaIndex, RAG Pipelines, ChromaDB, Model Context Protocol, Microsoft Copilot Studio]
+  - group: Backend & Databases
+    items: [FastAPI, Node.js, Express, REST APIs, PostgreSQL, MySQL, SQLite, MongoDB, Redis, JWT, RBAC]
+  - group: Frontend, Cloud & DevOps
+    items: [Angular, React, AWS, Azure, Docker, Git, GitLab, GitHub Actions, CI/CD, Cursor, Cursor SDK, Kiro, SAP ABAP]
+
+achievements:
+  - title: Gold Medalist
+    detail: Information Technology, Batch 2022–2026, IIIT Sonepat
+  - title: ICPC Rank 73
+    detail: "Kanpur Regionals 2025 · 396th ICPC 2025 Preliminary · 431st ICPC 2024 Preliminary"
+  - title: 4★ CodeChef
+    detail: Max rating 1817
+  - title: Pupil on Codeforces
+    detail: Max rating 1325
+  - title: 500+ problems
+    detail: Solved across competitive programming platforms
+
+certifications:
+  - name: "Microsoft Certified: AI Agent Builder Associate"
+    issuer: Microsoft
+    url: "https://learn.microsoft.com/api/credentials/share/en-gb/SilaparasettiLohith-9310/DF7DC5D94A9C479C?sharingId=61B511FCA4FD11C6"
+  - name: "Microsoft Certified: Azure AI Cloud Developer Associate"
+    issuer: Microsoft
+    url: "https://learn.microsoft.com/api/credentials/share/en-gb/SilaparasettiLohith-9310/119F632DABC3FFE7?sharingId=61B511FCA4FD11C6"
+  - name: "Microsoft Certified: Fabric Data Engineer Associate"
+    issuer: Microsoft
+    url: "https://learn.microsoft.com/api/credentials/share/en-gb/SilaparasettiLohith-9310/AD6AC674B8045858?sharingId=61B511FCA4FD11C6"
