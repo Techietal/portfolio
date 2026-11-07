@@ -17,6 +17,8 @@ seo:
     Silaparasetti Lohith is an AI/ML engineer building agentic systems, RAG and MCP
     tooling. Published in Scientific Reports (Nature Portfolio) and IEEE. ICPC Rank 73.
   keywords: [Silaparasetti Lohith, AI engineer, agentic AI, multi-agent systems, RAG, MCP, LangGraph, cloud scheduling research]
+  # Google Search Console → "HTML tag" verification: paste only the content="..." value here.
+  googleSiteVerification: "XuIenk2df84urgE55i5p8ov_MvmSiGLuU2vCFMWiqd0"
 
 hero:
   eyebrow: AI/ML Engineer · Published Researcher · Gold Medalist

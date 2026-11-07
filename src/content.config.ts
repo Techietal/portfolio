@@ -24,6 +24,8 @@ const profile = defineCollection({
       title: z.string(),
       description: z.string().max(170),
       keywords: z.array(z.string()),
+      /** Google Search Console "HTML tag" code (just the content="..." value). */
+      googleSiteVerification: z.string().optional(),
     }),
 
     hero: z.object({

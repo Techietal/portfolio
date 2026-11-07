@@ -3,7 +3,7 @@
  * Every <head> tag (PLAN.md §6.1).
  * Description is trimmed to 160 characters at a word boundary.
  */
-import { SITE } from '../lib/site';
+import { SITE, getProfile } from '../lib/site';
 
 interface Props {
   title: string;
@@ -37,6 +37,7 @@ function trimDescription(text: string, max = 160): string {
   return (cut > 0 ? slice.slice(0, cut) : slice).replace(/[\s,;:–—-]+$/, '');
 }
 
+const verification = (await getProfile()).seo.googleSiteVerification?.trim();
 const canonical = new URL(path, site).href;
 const imageURL = new URL(image, site).href;
 const resolvedDescription = trimDescription(description ?? title);
@@ -72,5 +73,6 @@ const robots = noindex ? 'noindex, nofollow' : 'index, follow';
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+{verification && <meta name="google-site-verification" content={verification} />}
 
 {jsonLd.map((entry) => <script type="application/ld+json" set:html={JSON.stringify(entry)} />)}

@@ -36,7 +36,8 @@ const note = splitLeadingGlyph(hero.note);
     <div class="hero__copy">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1 class="hero__title">
-        <span class="sr-only">{profile.name}: </span>
+        <!-- Visible full name: the strongest on-page signal for searches on the name -->
+        <span class="hero__name">{profile.name}</span>
         {
           hero.headlineLines.map((line, index) => (
             <>
@@ -105,6 +106,14 @@ const note = splitLeadingGlyph(hero.note);
     line-height: 0.84;
     letter-spacing: -0.085em;
     text-transform: uppercase;
+  }
+
+  .hero__name {
+    display: block;
+    margin-bottom: 0.45em;
+    font-size: clamp(26px, 3.4vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.05em;
   }
 
   .hero__intro {
